@@ -40,6 +40,7 @@ $('.mybutton').on('click',function(){
         }
         else if($('#applicantType'+i+'').val() == "3" && $('#stay_type_id'+i+'').val() != '' && $('#labour_card_type_id'+i+'').val() == ''){
             $('#stay_type_id'+i+'').removeClass('border-danger');
+            $('#alertmsg'+i+'').addClass('d-none');
             $('#labouralert'+i+'').removeClass('d-none');
             $('#labour_card_type_id'+i+'').addClass('border-danger');
             isDisable = true;
@@ -80,28 +81,27 @@ $('.mybutton').on('click',function(){
     var oss_status = '';
     var app_numbers = '၀';
     var des = '';
-
-
+    
     if ($('#nationality_id1').val() != '' && $('#PersonName1').val() != '' && $('.PassportNo1').val() != '') {
         
-        if ($('#visa_type_id1') != '') {
+        if ($('#visa_type_id1').val() != '' && $('#visa_type_id1').val() != null) {
             VisaApply = true;
 
-            if ($('#visa_type_id1') == 1){
+            if ($('#visa_type_id1').val() == 1){
                 VisaApplySingle = true;
-            } else if ($('#visa_type_id1') == 2){
+            } else if ($('#visa_type_id1').val() == 2){
                 VisaApplyMultiple = true;
             }
         }
-        if ($('#stay_type_id1').val() != '') {
+        if ($('#stay_type_id1').val() != '' && $('#stay_type_id1').val() != null) {
             StayApply = true;
         }
-        if ($('#labour_card_type_id1') != '') {
+        if ($('#labour_card_type_id1').val() != '' && $('#labour_card_type_id1').val() != null) {
             LabourCardApply = true;
 
-            if ($('#labour_card_type_id1') == 1){
+            if ($('#labour_card_type_id1').val() == 1){
                 LabourCardApplyNew = true;
-            } else if ($('#labour_card_type_id1') == 2){
+            } else if ($('#labour_card_type_id1').val() == 2){
                 LabourCardApplyRenew = true;
             }
         }      
@@ -109,179 +109,180 @@ $('.mybutton').on('click',function(){
         ApplicantNumbers += 1;
         
     }
-        
+
     if ($('#nationality_id2').val() != '' && $('#PersonName2').val() != '' && $('.PassportNo2').val() != '') {
-        
-        if ($('#visa_type_id2') != '') {
+        if ($('#nationality_id2').val() != null && $('#PersonName2').val() != null && $('.PassportNo2').val() != null) {
+
+        if ($('#visa_type_id2').val() != '' && $('#visa_type_id2').val() != null) {
             VisaApply = true;
 
-            if ($('#visa_type_id2') == 1){
+            if ($('#visa_type_id2').val() == 1){
                 VisaApplySingle = true;
-            } else if ($('#visa_type_id2') == 2){
+            } else if ($('#visa_type_id2').val() == 2){
                 VisaApplyMultiple = true;
             }
         }
-        if ($('#stay_type_id2').val() != '') {
+        if ($('#stay_type_id2').val() != '' && $('#stay_type_id2').val() != null) {
             StayApply = true;
         }
-        if ($('#labour_card_type_id2') != '') {
+        if ($('#labour_card_type_id2').val() != '' && $('#labour_card_type_id2').val() != null) {
             LabourCardApply = true;
 
-            if ($('#labour_card_type_id2') == 1){
+            if ($('#labour_card_type_id2').val() == 1){
                 LabourCardApplyNew = true;
-            } else if ($('#labour_card_type_id2') == 2){
+            } else if ($('#labour_card_type_id2').val() == 2){
                 LabourCardApplyRenew = true;
             }
         }      
 
         ApplicantNumbers += 1;
-
+    }
         
     }
 
     if ($('#nationality_id3').val() != '' && $('#PersonName3').val() != '' && $('.PassportNo3').val() != '') {
-        
+        if ($('#nationality_id3').val() != null && $('#PersonName3').val() != null && $('.PassportNo3').val() != null) {
 
-        if ($('#visa_type_id3') != '') {
+        if ($('#visa_type_id3').val() != '' && $('#visa_type_id3').val() != null) {
             VisaApply = true;
 
-            if ($('#visa_type_id3') == 1){
+            if ($('#visa_type_id3').val() == 1){
                 VisaApplySingle = true;
-            } else if ($('#visa_type_id3') == 2){
+            } else if ($('#visa_type_id3').val() == 2){
                 VisaApplyMultiple = true;
             }
         }
-        if ($('#stay_type_id3').val() != '') {
+        if ($('#stay_type_id3').val() != '' && $('#stay_type_id3').val() != null) {
             StayApply = true;
         }
-        if ($('#labour_card_type_id3') != '') {
+        if ($('#labour_card_type_id3').val() != '' && $('#labour_card_type_id3').val() != null) {
             LabourCardApply = true;
 
-            if ($('#labour_card_type_id3') == 1){
+            if ($('#labour_card_type_id3').val() == 1){
                 LabourCardApplyNew = true;
-            } else if ($('#labour_card_type_id3') == 2){
+            } else if ($('#labour_card_type_id3').val() == 2){
                 LabourCardApplyRenew = true;
             }
         }      
 
         ApplicantNumbers += 1;
-        
+        }
     }
 
     if ($('#nationality_id4').val() != '' && $('#PersonName4').val() != '' && $('.PassportNo4').val() != '') {
-        
+        if ($('#nationality_id4').val() != null && $('#PersonName4').val() != null && $('.PassportNo4').val() != null) {
 
-        if ($('#visa_type_id4') != '') {
+        if ($('#visa_type_id4').val() != '' && $('#visa_type_id4').val() != null) {
             VisaApply = true;
 
-            if ($('#visa_type_id4') == 1){
+            if ($('#visa_type_id4').val() == 1){
                 VisaApplySingle = true;
-            } else if ($('#visa_type_id4') == 2){
+            } else if ($('#visa_type_id4').val() == 2){
                 VisaApplyMultiple = true;
             }
         }
-        if ($('#stay_type_id4').val() != '') {
+        if ($('#stay_type_id4').val() != '' && $('#stay_type_id4').val() != null) {
             StayApply = true;
         }
-        if ($('#labour_card_type_id4') != '') {
+        if ($('#labour_card_type_id4').val() != '' && $('#labour_card_type_id4').val() != null) {
             LabourCardApply = true;
 
-            if ($('#labour_card_type_id4') == 1){
+            if ($('#labour_card_type_id4').val() == 1){
                 LabourCardApplyNew = true;
-            } else if ($('#labour_card_type_id4') == 2){
+            } else if ($('#labour_card_type_id4').val() == 2){
                 LabourCardApplyRenew = true;
             }
         }      
 
         ApplicantNumbers += 1;
-        
+        }
     }
 
     if ($('#nationality_id5').val() != '' && $('#PersonName5').val() != '' && $('.PassportNo5').val() != '') {
-        
+        if ($('#nationality_id5').val() != null && $('#PersonName5').val() != null && $('.PassportNo5').val() != null) {
 
-        if ($('#visa_type_id5') != '') {
+        if ($('#visa_type_id5').val() != '' && $('#visa_type_id5').val() != null) {
             VisaApply = true;
 
-            if ($('#visa_type_id5') == 1){
+            if ($('#visa_type_id5').val() == 1){
                 VisaApplySingle = true;
-            } else if ($('#visa_type_id5') == 2){
+            } else if ($('#visa_type_id5').val() == 2){
                 VisaApplyMultiple = true;
             }
         }
-        if ($('#stay_type_id5').val() != '') {
+        if ($('#stay_type_id5').val() != '' && $('#stay_type_id5').val() != null) {
             StayApply = true;
         }
-        if ($('#labour_card_type_id5') != '') {
+        if ($('#labour_card_type_id5').val() != '' && $('#labour_card_type_id5').val() != null) {
             LabourCardApply = true;
 
-            if ($('#labour_card_type_id5') == 1){
+            if ($('#labour_card_type_id5').val() == 1){
                 LabourCardApplyNew = true;
-            } else if ($('#labour_card_type_id5') == 2){
+            } else if ($('#labour_card_type_id5').val() == 2){
                 LabourCardApplyRenew = true;
             }
         }      
 
         ApplicantNumbers += 1;
-        
+        }
     }
 
     if ($('#nationality_id6').val() != '' && $('#PersonName6').val() != '' && $('.PassportNo6').val() != '') {
-        
+        if ($('#nationality_id6').val() != null && $('#PersonName6').val() != null && $('.PassportNo6').val() != null) {
 
-        if ($('#visa_type_id6') != '') {
+        if ($('#visa_type_id6').val() != '' && $('#visa_type_id6').val() != null) {
             VisaApply = true;
 
-            if ($('#visa_type_id6') == 1){
+            if ($('#visa_type_id6').val() == 1){
                 VisaApplySingle = true;
-            } else if ($('#visa_type_id6') == 2){
+            } else if ($('#visa_type_id6').val() == 2){
                 VisaApplyMultiple = true;
             }
         }
-        if ($('#stay_type_id6').val() != '') {
+        if ($('#stay_type_id6').val() != '' && $('#stay_type_id6').val() != null) {
             StayApply = true;
         }
-        if ($('#labour_card_type_id6') != '') {
+        if ($('#labour_card_type_id6').val() != '' && $('#labour_card_type_id6').val() != null) {
             LabourCardApply = true;
 
-            if ($('#labour_card_type_id6') == 1){
+            if ($('#labour_card_type_id6').val() == 1){
                 LabourCardApplyNew = true;
-            } else if ($('#labour_card_type_id6') == 2){
+            } else if ($('#labour_card_type_id6').val() == 2){
                 LabourCardApplyRenew = true;
             }
         }      
 
         ApplicantNumbers += 1;
-        
+        }
     }
 
     if ($('#nationality_id7').val() != '' && $('#PersonName7').val() != '' && $('.PassportNo7').val() != '') {
-        
+        if ($('#nationality_id7').val() != null && $('#PersonName7').val() != null && $('.PassportNo7').val() != null) {
 
-        if ($('#visa_type_id7') != '') {
+        if ($('#visa_type_id7').val() != '' && $('#visa_type_id7').val() != null) {
             VisaApply = true;
 
-            if ($('#visa_type_id7') == 1){
+            if ($('#visa_type_id7').val() == 1){
                 VisaApplySingle = true;
-            } else if ($('#visa_type_id7') == 2){
+            } else if ($('#visa_type_id7').val() == 2){
                 VisaApplyMultiple = true;
             }
         }
-        if ($('#stay_type_id7').val() != '') {
+        if ($('#stay_type_id1').val() != '' && $('#stay_type_id7').val() != null) {
             StayApply = true;
         }
-        if ($('#labour_card_type_id7') != '') {
+        if ($('#labour_card_type_id7').val() != '' && $('#labour_card_type_id7').val() != null) {
             LabourCardApply = true;
 
-            if ($('#labour_card_type_id7') == 1){
+            if ($('#labour_card_type_id7').val() == 1){
                 LabourCardApplyNew = true;
-            } else if ($('#labour_card_type_id7') == 2){
+            } else if ($('#labour_card_type_id7').val() == 2){
                 LabourCardApplyRenew = true;
             }
         }      
 
         ApplicantNumbers += 1;
-        
+        }
     }
 
     //1-immigration, 2-labour, 3-both
@@ -412,7 +413,7 @@ $('.mybutton').on('click',function(){
     // table display
     var count = 0;
 
-    if($('#PersonName1').val() != '' || $('#nationality_id1').val() != '' || $('.PassportNo1').val() != '' || $('.StayAllowDate1').val() != ''){
+    if($('#PersonName1').val() != '' && $('#nationality_id1').val() != '' && $('.PassportNo1').val() != ''){
         count ++;
         var visaType = '';
         if($('#visa_type_id1').val() == 1)
@@ -429,12 +430,19 @@ $('.mybutton').on('click',function(){
             stayType = 'တစ်နှစ်';
 
         var labourType = '';
-        if($('#labour_card_type_id1').val() == 1)
+        if($('#applicantType1').val() == "4"){
+            labourType = 'မှီခို';
+        }
+        else if($('#labour_card_type_id1').val() == 1)
             labourType = 'အသစ်လျှောက်';
         else if($('#labour_card_type_id1').val() == 2)
             labourType = 'သက်တမ်းတိုး';
-
+        
         var labourDuration = '';
+        if($('#applicantType1').val() == "4"){
+            labourDuration = '-';
+            $('#labour_card_duration1').val(null);
+        }
         if($('#labour_card_duration1').val() == 1)
             labourDuration = '၃ လ';
         else if($('#labour_card_duration1').val() == 2)
@@ -445,6 +453,7 @@ $('.mybutton').on('click',function(){
 
         var nationality = $( "#nationality_id1 option:selected" ).text();
         var applicationName = $( "#applicantType1 option:selected" ).text();
+
 
         bodyhtml += `
                     <tr>
@@ -462,310 +471,382 @@ $('.mybutton').on('click',function(){
                 `;
     }
 
-    if($('#PersonName2').val() != '' || $('#nationality_id2').val() != '' || $('.PassportNo2').val() != '' || $('.StayAllowDate2').val() != ''){
-        count ++;
-        var visaType = '';
-        if($('#visa_type_id2').val() == 1)
-            visaType = 'တစ်ကြိမ်';
-        else if($('#visa_type_id2').val() == 2)
-            visaType = 'အကြိမ်ကြိမ်';
+    if($('#PersonName2').val() != '' && $('#nationality_id2').val() != '' && $('.PassportNo2').val() != ''){
+        if ($('#nationality_id2').val() != null && $('#PersonName2').val() != null && $('.PassportNo2').val() != null) {
 
-        var stayType = '';
-        if($('#stay_type_id2').val() == 1)
-            stayType = '၃ လ';
-        else if($('#stay_type_id2').val() == 2)
-            stayType = '၆ လ';
-        else if($('#stay_type_id2').val() == 3)
-            stayType = 'တစ်နှစ်';
+            count ++;
+            var visaType = '';
+            if($('#visa_type_id2').val() == 1)
+                visaType = 'တစ်ကြိမ်';
+            else if($('#visa_type_id2').val() == 2)
+                visaType = 'အကြိမ်ကြိမ်';
 
-        var labourType = '';
-        if($('#labour_card_type_id2').val() == 1)
-            labourType = 'အသစ်လျှောက်';
-        else if($('#labour_card_type_id2').val() == 2)
-            labourType = 'သက်တမ်းတိုး';
+            var stayType = '';
+            if($('#stay_type_id2').val() == 1)
+                stayType = '၃ လ';
+            else if($('#stay_type_id2').val() == 2)
+                stayType = '၆ လ';
+            else if($('#stay_type_id2').val() == 3)
+                stayType = 'တစ်နှစ်';
 
-        var labourDuration = '';
-        if($('#labour_card_duration2').val() == 1)
-            labourDuration = '၃ လ';
-        else if($('#labour_card_duration2').val() == 2)
-            labourDuration = '၆ လ';
-        else if($('#labour_card_duration2').val() == 3)
-            labourDuration = 'တစ်နှစ်';
+            var labourType = '';
+            if($('#applicantType2').val() == "4"){
+                labourType = 'မှီခို';
+            }
+            else if($('#labour_card_type_id2').val() == 1)
+                labourType = 'အသစ်လျှောက်';
+            else if($('#labour_card_type_id2').val() == 2)
+                labourType = 'သက်တမ်းတိုး';
+
+            var labourDuration = '';
+            if($('#applicantType2').val() == "4"){
+                labourDuration = '-';
+                $('#labour_card_duration2').val(null);
+            }
+            else if($('#labour_card_duration2').val() == 1)
+                labourDuration = '၃ လ';
+            else if($('#labour_card_duration2').val() == 2)
+                labourDuration = '၆ လ';
+            else if($('#labour_card_duration2').val() == 3)
+                labourDuration = 'တစ်နှစ်';
 
 
-        var nationality = $( "#nationality_id2 option:selected" ).text();
-        var applicationName = $( "#applicantType2 option:selected" ).text();
+            var nationality = $( "#nationality_id2 option:selected" ).text();
+            var applicationName = $( "#applicantType2 option:selected" ).text();
 
-        bodyhtml += `
-                    <tr>
-                        <td>${count}</td>
-                        <td>${$('#PersonName2').val()}/${applicationName}</td>
-                        <td>${nationality}</td>
-                        <td>${$('.PassportNo2').val()}</td>
-                        <td>${$('.StayAllowDate2').val()}</td>
-                        <td>${$('.StayExpireDate2').val()}</td>
-                        <td>${visaType}</td>
-                        <td>${stayType}</td>
-                        <td>${labourType}/${labourDuration}</td>
-                    </tr>
+            bodyhtml += `
+                        <tr>
+                            <td>${count}</td>
+                            <td>${$('#PersonName2').val()}/${applicationName}</td>
+                            <td>${nationality}</td>
+                            <td>${$('.PassportNo2').val()}</td>
+                            <td>${$('.StayAllowDate2').val()}</td>
+                            <td>${$('.StayExpireDate2').val()}</td>
+                            <td>${visaType}</td>
+                            <td>${stayType}</td>
+                            <td>${labourType}/${labourDuration}</td>
+                        </tr>
 
-                `;
+                    `;
+        }
     }
 
-    if($('#PersonName3').val() != '' || $('#nationality_id3').val() != '' || $('.PassportNo3').val() != '' || $('.StayAllowDate3').val() != ''){
-        count ++;
-        var visaType = '';
-        if($('#visa_type_id3').val() == 1)
-            visaType = 'တစ်ကြိမ်';
-        else if($('#visa_type_id3').val() == 2)
-            visaType = 'အကြိမ်ကြိမ်';
+    if($('#PersonName3').val() != '' && $('#nationality_id3').val() != '' && $('.PassportNo3').val() != ''){
+        if ($('#nationality_id3').val() != null && $('#PersonName3').val() != null && $('.PassportNo3').val() != null) {
 
-        var stayType = '';
-        if($('#stay_type_id3').val() == 1)
-            stayType = '၃ လ';
-        else if($('#stay_type_id3').val() == 2)
-            stayType = '၆ လ';
-        else if($('#stay_type_id3').val() == 3)
-            stayType = 'တစ်နှစ်';
+            count ++;
+            var visaType = '';
+            if($('#visa_type_id3').val() == 1)
+                visaType = 'တစ်ကြိမ်';
+            else if($('#visa_type_id3').val() == 2)
+                visaType = 'အကြိမ်ကြိမ်';
 
-        var labourType = '';
-        if($('#labour_card_type_id3').val() == 1)
-            labourType = 'အသစ်လျှောက်';
-        else if($('#labour_card_type_id3').val() == 2)
-            labourType = 'သက်တမ်းတိုး';
+            var stayType = '';
+            if($('#stay_type_id3').val() == 1)
+                stayType = '၃ လ';
+            else if($('#stay_type_id3').val() == 2)
+                stayType = '၆ လ';
+            else if($('#stay_type_id3').val() == 3)
+                stayType = 'တစ်နှစ်';
 
-        var labourDuration = '';
-        if($('#labour_card_duration3').val() == 1)
-            labourDuration = '၃ လ';
-        else if($('#labour_card_duration3').val() == 2)
-            labourDuration = '၆ လ';
-        else if($('#labour_card_duration3').val() == 3)
-            labourDuration = 'တစ်နှစ်';
+            var labourType = '';
+            if($('#applicantType3').val() == "4"){
+                labourType = 'မှီခို';
+            }
+            else if($('#labour_card_type_id3').val() == 1)
+                labourType = 'အသစ်လျှောက်';
+            else if($('#labour_card_type_id3').val() == 2)
+                labourType = 'သက်တမ်းတိုး';
+
+            var labourDuration = '';
+            if($('#applicantType3').val() == "4"){
+                labourDuration = '-';
+                $('#labour_card_duration3').val(null);
+            }
+            else if($('#labour_card_duration3').val() == 1)
+                labourDuration = '၃ လ';
+            else if($('#labour_card_duration3').val() == 2)
+                labourDuration = '၆ လ';
+            else if($('#labour_card_duration3').val() == 3)
+                labourDuration = 'တစ်နှစ်';
 
 
-        var nationality = $( "#nationality_id3 option:selected" ).text();
-        var applicationName = $( "#applicantType3 option:selected" ).text();
+            var nationality = $( "#nationality_id3 option:selected" ).text();
+            var applicationName = $( "#applicantType3 option:selected" ).text();
 
-        bodyhtml += `
-                    <tr>
-                        <td>${count}</td>
-                        <td>${$('#PersonName3').val()}/${applicationName}</td>
-                        <td>${nationality}</td>
-                        <td>${$('.PassportNo3').val()}</td>
-                        <td>${$('.StayAllowDate3').val()}</td>
-                        <td>${$('.StayExpireDate3').val()}</td>
-                        <td>${visaType}</td>
-                        <td>${stayType}</td>
-                        <td>${labourType}/${labourDuration}</td>
-                    </tr>
+            bodyhtml += `
+                        <tr>
+                            <td>${count}</td>
+                            <td>${$('#PersonName3').val()}/${applicationName}</td>
+                            <td>${nationality}</td>
+                            <td>${$('.PassportNo3').val()}</td>
+                            <td>${$('.StayAllowDate3').val()}</td>
+                            <td>${$('.StayExpireDate3').val()}</td>
+                            <td>${visaType}</td>
+                            <td>${stayType}</td>
+                            <td>${labourType}/${labourDuration}</td>
+                        </tr>
 
-                `;
+                    `;
+        }
     }
 
-    if($('#PersonName4').val() != '' || $('#nationality_id4').val() != '' || $('.PassportNo4').val() != '' || $('.StayAllowDate4').val() != ''){
-        count ++;
-        var visaType = '';
-        if($('#visa_type_id4').val() == 1)
-            visaType = 'တစ်ကြိမ်';
-        else if($('#visa_type_id4').val() == 2)
-            visaType = 'အကြိမ်ကြိမ်';
+    if($('#PersonName4').val() != '' && $('#nationality_id4').val() != '' && $('.PassportNo4').val() != ''){
+        if ($('#nationality_id4').val() != null && $('#PersonName4').val() != null && $('.PassportNo4').val() != null) {
 
-        var stayType = '';
-        if($('#stay_type_id4').val() == 1)
-            stayType = '၃ လ';
-        else if($('#stay_type_id4').val() == 2)
-            stayType = '၆ လ';
-        else if($('#stay_type_id4').val() == 3)
-            stayType = 'တစ်နှစ်';
+            count ++;
+            var visaType = '';
+            if($('#visa_type_id4').val() == 1)
+                visaType = 'တစ်ကြိမ်';
+            else if($('#visa_type_id4').val() == 2)
+                visaType = 'အကြိမ်ကြိမ်';
 
-        var labourType = '';
-        if($('#labour_card_type_id4').val() == 1)
-            labourType = 'အသစ်လျှောက်';
-        else if($('#labour_card_type_id4').val() == 2)
-            labourType = 'သက်တမ်းတိုး';
+            var stayType = '';
+            if($('#stay_type_id4').val() == 1)
+                stayType = '၃ လ';
+            else if($('#stay_type_id4').val() == 2)
+                stayType = '၆ လ';
+            else if($('#stay_type_id4').val() == 3)
+                stayType = 'တစ်နှစ်';
 
-        var labourDuration = '';
-        if($('#labour_card_duration4').val() == 1)
-            labourDuration = '၃ လ';
-        else if($('#labour_card_duration4').val() == 2)
-            labourDuration = '၆ လ';
-        else if($('#labour_card_duration4').val() == 3)
-            labourDuration = 'တစ်နှစ်';
+            var labourType = '';
+            if($('#applicantType4').val() == "4"){
+                labourType = 'မှီခို';
+            }
+            else if($('#labour_card_type_id4').val() == 1)
+                labourType = 'အသစ်လျှောက်';
+            else if($('#labour_card_type_id4').val() == 2)
+                labourType = 'သက်တမ်းတိုး';
+
+            var labourDuration = '';
+            if($('#applicantType4').val() == "4"){
+                labourDuration = '-';
+                $('#labour_card_duration4').val(null);
+            }
+            else if($('#labour_card_duration4').val() == 1)
+                labourDuration = '၃ လ';
+            else if($('#labour_card_duration4').val() == 2)
+                labourDuration = '၆ လ';
+            else if($('#labour_card_duration4').val() == 3)
+                labourDuration = 'တစ်နှစ်';
 
 
-        var nationality = $( "#nationality_id4 option:selected" ).text();
-        var applicationName = $( "#applicantType4 option:selected" ).text();
+            var nationality = $( "#nationality_id4 option:selected" ).text();
+            var applicationName = $( "#applicantType4 option:selected" ).text();
 
-        bodyhtml += `
-                    <tr>
-                        <td>${count}</td>
-                        <td>${$('#PersonName4').val()}/${applicationName}</td>
-                        <td>${nationality}</td>
-                        <td>${$('.PassportNo4').val()}</td>
-                        <td>${$('.StayAllowDate4').val()}</td>
-                        <td>${$('.StayExpireDate4').val()}</td>
-                        <td>${visaType}</td>
-                        <td>${stayType}</td>
-                        <td>${labourType}/${labourDuration}</td>
-                    </tr>
+            bodyhtml += `
+                        <tr>
+                            <td>${count}</td>
+                            <td>${$('#PersonName4').val()}/${applicationName}</td>
+                            <td>${nationality}</td>
+                            <td>${$('.PassportNo4').val()}</td>
+                            <td>${$('.StayAllowDate4').val()}</td>
+                            <td>${$('.StayExpireDate4').val()}</td>
+                            <td>${visaType}</td>
+                            <td>${stayType}</td>
+                            <td>${labourType}/${labourDuration}</td>
+                        </tr>
 
-                `;
+                    `;
+        }
     }
 
-    if($('#PersonName5').val() != '' || $('#nationality_id5').val() != '' || $('.PassportNo5').val() != '' || $('.StayAllowDate5').val() != ''){
-        count ++;
-        var visaType = '';
-        if($('#visa_type_id5').val() == 1)
-            visaType = 'တစ်ကြိမ်';
-        else
-            visaType = 'အကြိမ်ကြိမ်';
+    if($('#PersonName5').val() != '' && $('#nationality_id5').val() != '' && $('.PassportNo5').val() != ''){
+        if ($('#nationality_id5').val() != null && $('#PersonName5').val() != null && $('.PassportNo5').val() != null) {
 
-        var stayType = '';
-        if($('#stay_type_id5').val() == 1)
-            stayType = '၃ လ';
-        else if($('#stay_type_id5').val() == 2)
-            stayType = '၆ လ';
-        else
-            stayType = 'တစ်နှစ်';
+            count ++;
+            var visaType = '';
+            if($('#visa_type_id5').val() == 1)
+                visaType = 'တစ်ကြိမ်';
+            else
+                visaType = 'အကြိမ်ကြိမ်';
 
-        var labourType = '';
-        if($('#labour_card_type_id5').val() == 1)
-            labourType = 'အသစ်လျှောက်';
-        else
-            labourType = 'သက်တမ်းတိုး';
+            var stayType = '';
+            if($('#stay_type_id5').val() == 1)
+                stayType = '၃ လ';
+            else if($('#stay_type_id5').val() == 2)
+                stayType = '၆ လ';
+            else
+                stayType = 'တစ်နှစ်';
 
-        var labourDuration = '';
-        if($('#labour_card_duration5').val() == 1)
-            labourDuration = '၃ လ';
-        else if($('#labour_card_duration5').val() == 2)
-            labourDuration = '၆ လ';
-        else
-            labourDuration = 'တစ်နှစ်';
+            var labourType = '';
+            if($('#applicantType5').val() == "4"){
+                labourType = 'မှီခို';
+            }
+            else if($('#labour_card_type_id5').val() == 1)
+                labourType = 'အသစ်လျှောက်';
+            else if($('#labour_card_type_id5').val() == 2)
+                labourType = 'သက်တမ်းတိုး';
+
+            var labourDuration = '';
+            if($('#applicantType5').val() == "4"){
+                labourDuration = '-';
+                $('#labour_card_duration5').val(null);
+            }
+            else if($('#labour_card_duration5').val() == 1)
+                labourDuration = '၃ လ';
+            else if($('#labour_card_duration5').val() == 2)
+                labourDuration = '၆ လ';
+            else if($('#labour_card_duration5').val() == 3)
+                labourDuration = 'တစ်နှစ်';
 
 
-        var nationality = $( "#nationality_id5 option:selected" ).text();
-        var applicationName = $( "#applicantType5 option:selected" ).text();
+            var nationality = $( "#nationality_id5 option:selected" ).text();
+            var applicationName = $( "#applicantType5 option:selected" ).text();
 
-        bodyhtml += `
-                    <tr>
-                        <td>${count}</td>
-                        <td>${$('#PersonName5').val()}/${applicationName}</td>
-                        <td>${nationality}</td>
-                        <td>${$('.PassportNo5').val()}</td>
-                        <td>${$('.StayAllowDate5').val()}</td>
-                        <td>${$('.StayExpireDate5').val()}</td>
-                        <td>${visaType}</td>
-                        <td>${stayType}</td>
-                        <td>${labourType}/${labourDuration}</td>
-                    </tr>
+            bodyhtml += `
+                        <tr>
+                            <td>${count}</td>
+                            <td>${$('#PersonName5').val()}/${applicationName}</td>
+                            <td>${nationality}</td>
+                            <td>${$('.PassportNo5').val()}</td>
+                            <td>${$('.StayAllowDate5').val()}</td>
+                            <td>${$('.StayExpireDate5').val()}</td>
+                            <td>${visaType}</td>
+                            <td>${stayType}</td>
+                            <td>${labourType}/${labourDuration}</td>
+                        </tr>
 
-                `;
+                    `;
+        }
     }
 
-    if($('#PersonName6').val() != '' || $('#nationality_id6').val() != '' || $('.PassportNo6').val() != '' || $('.StayAllowDate6').val() != ''){
-        count ++;
-        var visaType = '';
-        if($('#visa_type_id6').val() == 1)
-            visaType = 'တစ်ကြိမ်';
-        else if($('#visa_type_id6').val() == 2)
-            visaType = 'အကြိမ်ကြိမ်';
+    if($('#PersonName6').val() != '' && $('#nationality_id6').val() != '' && $('.PassportNo6').val() != ''){
+        if ($('#nationality_id6').val() != null && $('#PersonName6').val() != null && $('.PassportNo6').val() != null) {
 
-        var stayType = '';
-        if($('#stay_type_id6').val() == 1)
-            stayType = '၃ လ';
-        else if($('#stay_type_id6').val() == 2)
-            stayType = '၆ လ';
-        else if($('#stay_type_id6').val() == 3)
-            stayType = 'တစ်နှစ်';
+            count ++;
+            var visaType = '';
+            if($('#visa_type_id6').val() == 1)
+                visaType = 'တစ်ကြိမ်';
+            else if($('#visa_type_id6').val() == 2)
+                visaType = 'အကြိမ်ကြိမ်';
 
-        var labourType = '';
-        if($('#labour_card_type_id6').val() == 1)
-            labourType = 'အသစ်လျှောက်';
-        else if($('#labour_card_type_id6').val() == 2)
-            labourType = 'သက်တမ်းတိုး';
+            var stayType = '';
+            if($('#stay_type_id6').val() == 1)
+                stayType = '၃ လ';
+            else if($('#stay_type_id6').val() == 2)
+                stayType = '၆ လ';
+            else if($('#stay_type_id6').val() == 3)
+                stayType = 'တစ်နှစ်';
 
-        var labourDuration = '';
-        if($('#labour_card_duration6').val() == 1)
-            labourDuration = '၃ လ';
-        else if($('#labour_card_duration6').val() == 2)
-            labourDuration = '၆ လ';
-        else if($('#labour_card_duration6').val() == 3)
-            labourDuration = 'တစ်နှစ်';
+            var labourType = '';
+            if($('#applicantType6').val() == "4"){
+                labourType = 'မှီခို';
+            }
+            else if($('#labour_card_type_id6').val() == 1)
+                labourType = 'အသစ်လျှောက်';
+            else if($('#labour_card_type_id6').val() == 2)
+                labourType = 'သက်တမ်းတိုး';
+
+            var labourDuration = '';
+            if($('#applicantType6').val() == "4"){
+                labourDuration = '-';
+                $('#labour_card_duration6').val(null);
+            }
+            else if($('#labour_card_duration6').val() == 1)
+                labourDuration = '၃ လ';
+            else if($('#labour_card_duration6').val() == 2)
+                labourDuration = '၆ လ';
+            else if($('#labour_card_duration6').val() == 3)
+                labourDuration = 'တစ်နှစ်';
 
 
-        var nationality = $( "#nationality_id6 option:selected" ).text();
-        var applicationName = $( "#applicantType6 option:selected" ).text();
+            var nationality = $( "#nationality_id6 option:selected" ).text();
+            var applicationName = $( "#applicantType6 option:selected" ).text();
 
-        bodyhtml += `
-                    <tr>
-                        <td>${count}</td>
-                        <td>${$('#PersonName6').val()}/${applicationName}</td>
-                        <td>${nationality}</td>
-                        <td>${$('.PassportNo6').val()}</td>
-                        <td>${$('.StayAllowDate6').val()}</td>
-                        <td>${$('.StayExpireDate6').val()}</td>
-                        <td>${visaType}</td>
-                        <td>${stayType}</td>
-                        <td>${labourType}/${labourDuration}</td>
-                    </tr>
+            bodyhtml += `
+                        <tr>
+                            <td>${count}</td>
+                            <td>${$('#PersonName6').val()}/${applicationName}</td>
+                            <td>${nationality}</td>
+                            <td>${$('.PassportNo6').val()}</td>
+                            <td>${$('.StayAllowDate6').val()}</td>
+                            <td>${$('.StayExpireDate6').val()}</td>
+                            <td>${visaType}</td>
+                            <td>${stayType}</td>
+                            <td>${labourType}/${labourDuration}</td>
+                        </tr>
 
-                `;
+                    `;
+        }
     }
 
-    if($('#PersonName7').val() != '' || $('#nationality_id7').val() != '' || $('.PassportNo7').val() != '' || $('.StayAllowDate7').val() != ''){
-        count ++;
-        var visaType = '';
-        if($('#visa_type_id7').val() == 1)
-            visaType = 'တစ်ကြိမ်';
-        else if($('#visa_type_id7').val() == 2)
-            visaType = 'အကြိမ်ကြိမ်';
+    if($('#PersonName7').val() != '' && $('#nationality_id7').val() != '' && $('.PassportNo7').val() != ''){
+        if ($('#nationality_id7').val() != null && $('#PersonName7').val() != null && $('.PassportNo7').val() != null) {
 
-        var stayType = '';
-        if($('#stay_type_id7').val() == 1)
-            stayType = '၃ လ';
-        else if($('#stay_type_id7').val() == 2)
-            stayType = '၆ လ';
-        else if($('#stay_type_id7').val() == 3)
-            stayType = 'တစ်နှစ်';
+            count ++;
+            var visaType = '';
+            if($('#visa_type_id7').val() == 1)
+                visaType = 'တစ်ကြိမ်';
+            else if($('#visa_type_id7').val() == 2)
+                visaType = 'အကြိမ်ကြိမ်';
 
-        var labourType = '';
-        if($('#labour_card_type_id7').val() == 1)
-            labourType = 'အသစ်လျှောက်';
-        else if($('#labour_card_type_id7').val() == 2)
-            labourType = 'သက်တမ်းတိုး';
+            var stayType = '';
+            if($('#stay_type_id7').val() == 1)
+                stayType = '၃ လ';
+            else if($('#stay_type_id7').val() == 2)
+                stayType = '၆ လ';
+            else if($('#stay_type_id7').val() == 3)
+                stayType = 'တစ်နှစ်';
 
-        var labourDuration = '';
-        if($('#labour_card_duration7').val() == 1)
-            labourDuration = '၃ လ';
-        else if($('#labour_card_duration7').val() == 2)
-            labourDuration = '၆ လ';
-        else  if($('#labour_card_duration7').val() == 3)
-            labourDuration = 'တစ်နှစ်';
+            var labourType = '';
+            if($('#applicantType7').val() == "4"){
+                labourType = 'မှီခို';
+            }
+            else if($('#labour_card_type_id7').val() == 1)
+                labourType = 'အသစ်လျှောက်';
+            else if($('#labour_card_type_id7').val() == 2)
+                labourType = 'သက်တမ်းတိုး';
+
+            var labourDuration = '';
+            if($('#applicantType7').val() == "4"){
+                labourDuration = '-';
+                $('#labour_card_duration7').val(null);
+            }
+            else if($('#labour_card_duration7').val() == 1)
+                labourDuration = '၃ လ';
+            else if($('#labour_card_duration7').val() == 2)
+                labourDuration = '၆ လ';
+            else if($('#labour_card_duration7').val() == 3)
+                labourDuration = 'တစ်နှစ်';
 
 
-        var nationality = $( "#nationality_id7 option:selected" ).text();
-        var applicationName = $( "#applicantType7 option:selected" ).text();
+            var nationality = $( "#nationality_id7 option:selected" ).text();
+            var applicationName = $( "#applicantType7 option:selected" ).text();
 
-        bodyhtml += `
-                    <tr>
-                        <td>${count}</td>
-                        <td>${$('#PersonName7').val()}/${applicationName}</td>
-                        <td>${nationality}</td>
-                        <td>${$('.PassportNo7').val()}</td>
-                        <td>${$('.StayAllowDate7').val()}</td>
-                        <td>${$('.StayExpireDate7').val()}</td>
-                        <td>${visaType}</td>
-                        <td>${stayType}</td>
-                        <td>${labourType}/${labourDuration}</td>
-                    </tr>
 
-                `;
+            bodyhtml += `
+                        <tr>
+                            <td>${count}</td>
+                            <td>${$('#PersonName7').val()}/${applicationName}</td>
+                            <td>${nationality}</td>
+                            <td>${$('.PassportNo7').val()}</td>
+                            <td>${$('.StayAllowDate7').val()}</td>
+                            <td>${$('.StayExpireDate7').val()}</td>
+                            <td>${visaType}</td>
+                            <td>${stayType}</td>
+                            <td>${labourType}/${labourDuration}</td>
+                        </tr>
+
+                    `;
+        }
     }
 
     $('#bodyhtml').html(bodyhtml);
 })
 
-
+// $('#applySubmit').on('click',function(){
+//     if($('#applicationType1').val() == "4")
+//         $('#labour_card_duration1').val(null);
+//     if($('#applicationType1').val() == "4")
+//         $('#labour_card_duration1').val(null);
+//     if($('#applicationType1').val() == "4")
+//         $('#labour_card_duration1').val(null);
+//     if($('#applicationType1').val() == "4")
+//         $('#labour_card_duration1').val(null);
+//     if($('#applicationType1').val() == "4")
+//         $('#labour_card_duration1').val(null);
+// })
 
 function openCity(evt, cityName) {
   var i, tabcontent, tablinks;

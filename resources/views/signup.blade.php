@@ -21,13 +21,13 @@
 			    <span aria-hidden="true">&times;</span>
 			  </button>
 			</div>
-			@if (Auth::user()->RejectComment)
+@if (Auth::user()->RejectComment)
 			<div class="alert alert-danger alert-dismissible fade show" role="alert">
 			  <strong>
 					{{Auth::user()->RejectComment}}
 				</strong> 
 			</div>
-			@endif
+@endif
 			<h3 class="text-center mt-4"><span class="mm">
 ကုမ္ပဏီအချက်အလက်</span><span class="eng">COMPANY PROFILE</span></h3>
 			<br/>
@@ -282,6 +282,254 @@
 		  </button>
 		</div>
 	</div>
+{{-- update 12/22/2021 --}}
+@elseif (Auth::user()->Status == 3)
+	<hr style="opacity: 0.4">
+
+		<h5 style="color: green;" class="text-center"></h5>
+
+		<div class="container mb-5" style="">
+			<div class="alert alert-success alert-dismissible fade show" role="alert">
+			  <strong>Please Fill the Profile to Complete the Registration!</strong> 
+			  <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+			    <span aria-hidden="true">&times;</span>
+			  </button>
+			</div>
+			@if (Auth::user()->RejectComment)
+			<div class="alert alert-danger alert-dismissible fade show" role="alert">
+			  <strong>
+					{{Auth::user()->RejectComment}}
+				</strong> 
+			</div>
+			@endif
+			<h3 class="text-center mt-4"><span class="mm">
+ကုမ္ပဏီအချက်အလက်</span><span class="eng">COMPANY PROFILE</span></h3>
+			<br/>
+			<form action="{{ route('profile.store') }}" method="post" enctype="multipart/form-data">
+    				@csrf
+
+    			<input type="hidden" value="{{Auth::user()->id}}" name="user_id">
+
+    			
+				<div class="row">
+					<div class="col-6">
+						<fieldset class="form-group">
+							<label ><span class="mm">ကုမ္ပဏီအမည်</span><span class="eng">Company Name</span></label>
+							<input type="text" class="form-control" name="CompanyName" value="{{Auth::user()->profile->CompanyName}}" required>
+						</fieldset>
+					</div>
+					
+					<div class="col">
+					    <fieldset class="form-group">
+							<label ><span class="mm">ကုမ္ပဏီမှတ်ပုံတင်အမှတ်</span><span class="eng">Company Registeration No</span></label>
+							<input type="text" class="form-control" name="CompanyRegistrationNo" value="{{Auth::user()->profile->CompanyRegistrationNo}}" required>
+						</fieldset>
+					</div>
+					
+					<div class="col">
+					    <fieldset class="form-group">
+							<label >Sector</label>
+							<select class="form-control" name="sector_id" required>
+								<option value="">Choose</option>
+                                @foreach($sectors as $sec)
+                                	@if($sec->id == Auth::user()->profile->sector_id )
+                                		<option value="{{$sec->id}}" selected> {{$sec->SectorName}}</option>
+                                	@else
+                                		 <option value="{{$sec->id}}">{{$sec->SectorName}}</option>
+                                	@endif
+                               
+                                @endforeach
+                            </select>
+						</fieldset>
+					</div>
+
+					<div class="col">
+					    <fieldset class="form-group">
+							<label ><span class="mm">
+ဒေသ</span><span class="eng">Region</span></label>
+							<select class="form-control" name="region_id" required>
+								<option value="">Choose</option>
+                                @foreach($regions as $r)
+                                	@if($r->id == Auth::user()->profile->region_id)
+                                		<option value="{{$r->id}}" selected="">{{$r->RegionNameMM}}</option>
+                                	@else
+                                	   <option value="{{$r->id}}">{{$r->RegionNameMM}}</option>
+                                	@endif
+                              
+                                @endforeach
+                            </select>
+						</fieldset>
+					</div>
+				</div>
+				
+				<div class="row mt-3">
+					<div class="col">
+						<fieldset class="form-group">
+							<label ><span class="mm">လုပ်ငန်းအမျိုးအစား</span><span class="eng">Business Type</span> <b class="text-danger">*</b></label>
+							<br/>
+							<textarea class="form-control" name="BusinessType" required>{{Auth::user()->profile->BusinessType}}
+							</textarea>
+							<small class="text-danger" style="font-weight: bold;">*&nbsp;(MIC Permit ပါအတိုင်း မြန်မာလိုဖြည့်ရန်)</small>
+						</fieldset>
+					</div>
+				</div>
+
+				<div class="row mt-3">
+					<div class="col">
+						<fieldset class="form-group">
+							<label ><span class="mm">
+ခွင့်ပြုချက်/ထောက်ခံချက်အမျိုးအစား</span><span class="eng">Permit/Endorsement Type</span></label>
+							<select class="form-control" name="permit_type_id" required>
+								<option value="">Choose</option>
+                                @foreach($permittypes as $pt)
+                                	@if($pt->id == Auth::user()->profile->permit_type_id)
+                                		 <option value="{{$pt->id}}" selected="">{{$pt->PermitTypeNameMM}}</option>
+                                	@else 
+                                		 <option value="{{$pt->id}}">{{$pt->PermitTypeNameMM}}</option>
+                                	@endif
+                            
+                                @endforeach
+                            </select>
+						</fieldset>
+					</div>
+					<div class="col">
+						<fieldset class="form-group">
+							<label ><span class="mm">
+ခွင့်ပြုချက်/ထောက်ခံချက်အမှတ်</span><span class="eng">Permit/Endorsement No</span></label> <b class="text-danger">*</b>
+								<br>
+							<input type="text" class="form-control" name="PermitNo" value="{{Auth::user()->profile->PermitNo}}" required>
+							<small class="text-danger" style="font-weight: bold;">*&nbsp;(MIC Permit ပါအတိုင်း မြန်မာလိုဖြည့်ရန်)</small>
+						</fieldset>
+					</div>
+					
+					<div class="col">
+						<fieldset class="form-group">
+							<label ><span class="mm">ခွင့်ပြုရက်</span><span class="eng">Permitted Date</span></label>
+							<input type="date" class="form-control" name="PermittedDate" 
+							value="{{Auth::user()->profile->PermittedDate}}" required>
+						</fieldset>
+					</div>
+					<div class="col">
+						<fieldset class="form-group">
+							<label ><span class="mm">စတင်သောနေ့</span><span class="eng">Commencement Date</span></label>
+							<input type="date" class="form-control" name="CommercializationDate" 
+							value="{{Auth::user()->profile->CommercializationDate}}">
+						</fieldset>
+					</div>
+				</div>
+
+				<div class="row mt-3">
+					<div class="col">
+					    <fieldset class="form-group">
+							<label ><span class="mm">
+	
+							<textarea type="text" class="form-control" name="Township" required>{{ Auth::user()->profile->Township}}
+							</textarea>
+							<small class="text-danger" style="font-weight: bold;">*&nbsp;(MIC Permit ပါအတိုင်း မြန်မာလိုဖြည့်ရန်)</small>
+						</fieldset>
+					</div>
+					
+				</div>
+				
+				<br/>
+				
+				<div class="row mt-3">
+					<div class="col">
+						<fieldset class="form-group">
+							<label ></label>
+							<input readonly type="text" class="form-control" style="border: 0;" value="Numbers of Local Staff">
+						</fieldset>
+					</div>
+					<div class="col">
+						<fieldset class="form-group">
+							<label ><span class="mm">အဆိုပြု</span><span class="eng">In Proposal</span></label>
+							<input type="number" class="form-control" name="StaffLocalProposal" 
+							value="{{Auth::user()->profile->StaffLocalProposal}}" required>
+						</fieldset>
+					</div>
+					<div class="col">
+						<fieldset class="form-group">
+							<label ><span class="mm">ထပ်တိုး</span><span class="eng">Increased</span></label>
+							<input type="number" class="form-control" name="StaffLocalSurplus" value="{{Auth::user()->profile->StaffLocalSurplus}}" required>
+						</fieldset>
+					</div>
+					<div class="col">
+						<fieldset class="form-group">
+							<label ><span class="mm">ခန့်အပ်ပြီး</span><span class="eng">Appointed</span></label>
+							<input type="number" class="form-control" name="StaffLocalAppointed"  value="{{Auth::user()->profile->StaffLocalAppointed}}" required>
+						</fieldset>
+					</div>
+				</div>
+				
+				<div class="row mt-3">
+					<div class="col">
+						<fieldset class="form-group">
+							
+							<input readonly type="text" class="form-control" style="border: 0;" value="Numbers of Foreign Staff">
+						</fieldset>
+					</div>
+					<div class="col">
+						<fieldset class="form-group">
+							
+							<input type="number" class="form-control" name="StaffForeignProposal" value="{{Auth::user()->profile->StaffForeignProposal}}"  required min="0">
+						</fieldset>
+					</div>
+					<div class="col">
+						<fieldset class="form-group">
+							
+							<input type="number" class="form-control" name="StaffForeignSurplus" value="{{Auth::user()->profile->StaffForeignSurplus}}" required>
+						</fieldset>
+					</div>
+					<div class="col">
+						<fieldset class="form-group">
+							
+							<input type="number" class="form-control" name="StaffForeignAppointed"  value="{{Auth::user()->profile->StaffForeignAppointed}}" required>
+						</fieldset>
+					</div>
+				</div>
+
+                <br/>
+
+                <div class="row mt-3">
+                    <h3 class="text-center mt-3">ATTACHMENT</h3>
+                </div>
+                
+				<div class="row mt-3">
+				   <span class="mm" style="color:red;"><b>မှတ်ချက်</b>: အောက်ပါအချက်များကို ပူးတွဲတင်ပြရန် (PDF ဖိုင်ဖြင့်သာ)</span><span class="eng" style="color:red;"><b>Note</b>: The following documents need to be attached (PDF File Only) </span>
+                    <br><br>
+					<div class="col">
+						<fieldset class="form-group">
+							<label for="pxq11"><span class="mm">ခွင့်ပြုမိန့်</span><span class="eng">MIC Permit</span></label>
+    					    <input type="file" class="form-control" name="AttachPermit" id="pxq11" accept=".pdf" required onchange="validateFileSize(this);">
+						</fieldset>
+					</div>
+					<div class="col">
+						<fieldset class="form-group">
+							<label for="pxq12"><span class="mm">Proposal Employee List as per Proposal</span><span class="eng">Proposal Employee List as per Proposal</span></label>
+    					<input type="file" class="form-control" name="AttachProposal" id="pxq12" accept=".pdf" required onchange="validateFileSize(this);">
+						</fieldset>
+					</div>
+				</div>
+				<div class="row mt-3">
+					<div class="col">
+						<fieldset class="form-group">
+							<label for="pxq13"><span class="mm">Appointed Employee List (Local & Foreign)</span><span class="eng">Appointed Employee List (Local & Foreign)</span></label>
+    					<input type="file" class="form-control" name="AttachAppointed" id="pxq13" accept=".pdf" required onchange="validateFileSize(this);">
+						</fieldset>
+					</div>
+
+					<div class="col">
+						<fieldset class="form-group">
+							<label for="pxq14"><span class="mm">Increased Employee List (If Any)</span><span class="eng">Increased Employee List (If Any)</span></label>
+    					<input type="file" class="form-control" name="AttachIncreased" id="pxq14" accept=".pdf" onchange="validateFileSize(this);">
+						</fieldset>
+					</div>
+				</div>
+				
+				<button type="submit" class="btn btn-primary mt-4 mb-3">Submit</button>
+			</form>
+</div>
+
 @else
 	<hr style="opacity: 0.4">
 

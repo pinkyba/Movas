@@ -41,29 +41,30 @@
         <table>
             <thead>
                 <tr>
-                    <th rowspan="2">စဉ်</th>
-                    <th rowspan="2">အမည်</th>
-                    <th rowspan="2">နိုင်ငံသား</th>
-                    <th rowspan="2">လိင်</th>
-                    <th rowspan="2">နိုင်ငံကူးလက်မှတ်အမှတ်</th>
-                <!-- <th rowspan="2">ပြည်၀◌င်ခွင့်ဗီဇာအမှတ်</th> -->
-                    <th rowspan="2">သက်တမ်းကုန်ဆုံးသည့်နေ့</th>
-                    <th rowspan="2">ဗီဇာအမျိုးအစား</th>
-                    <th rowspan="2">နေထိုင်ခွင့်(ကာလ)</th>
-                    <th rowspan="2">နေထိုင်ခွင့်(မှ)</th>
-                    <th rowspan="2">နေထိုင်ခွင့်(သို့)</th>
-                    <th rowspan="2">လက်ရှိအလုပ်အကိုင်/ရာထူး</th>
-                    <th rowspan="2">တော်စပ်ပုံ</th>
+                    <th rowspan="2">???</th>
+                    <th rowspan="2">????</th>
+                    <th rowspan="2">??????????</th>
+                    <th rowspan="2">????</th>
+                    <th rowspan="2">??????????????????????</th>
+                    {{-- <th rowspan="2">??????????????????????</th> --}}
+                    <th rowspan="2">??????????????????????</th>
+                    <th rowspan="2">??????????????</th>
+                    <th rowspan="2">????????????(???)</th>
+                    <th rowspan="2">????????????(??)</th>
+                    <th rowspan="2">????????????(????)</th>
+                    <th rowspan="2">?????????????????/?????</th>
+                    <th rowspan="2">??????????</th>
                     <th rowspan="2">Sector</th>
-                    <th rowspan="2">ကုမ္ပဏီအမည်</th>
-                    <th rowspan="2">လိပ်စာ</th>
-                    <th rowspan="2">ခွင့်ပြုမိန့်(သို့)အတည်ပြုမိန့်အမှတ်</th>
-                    <th colspan="3">ထောက်ခံသည့်နေ့</th>
+                    <th rowspan="2">???????????</th>
+                      <th rowspan="2">??????</th>
+                    <th rowspan="2">?????????????(????)?????????????????</th>
+                  
+                    <th colspan="3">??????????????</th>
                 </tr>
                 <tr>
-                    <th style="width: 80px;">ရက်</th>
-                    <th style="width: 80px;">လ</th>
-                    <th style="width: 80px;">နှစ်</th>
+                    <th style="width: 80px;">???</th>
+                    <th style="width: 80px;">?</th>
+                    <th style="width: 80px;">????</th>
                 </tr>
             </thead>
             <tbody>

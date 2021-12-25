@@ -64,8 +64,4 @@ class Profile extends Model
     {
         return $this->belongsTo(PermitType::class);
     }
-
-    
-
-    
 }

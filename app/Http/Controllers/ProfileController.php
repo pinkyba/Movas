@@ -111,7 +111,83 @@ class ProfileController extends Controller
             Toastr::success('Profile submitted. Please wait for admin approval!');
 
             return redirect()->back();
-        }else{
+        }
+	else if (Auth::user()->Status == 3) {
+            if ($request->hasfile('AttachPermit')) {
+                $profile1 = $request->file('AttachPermit');
+                $upload_path1 =public_path().'/profile_attach/';
+                $name1 = Str::random(40).'AttachPermit'.time().'.'.$profile1->getClientOriginalExtension();
+                $profile1->move($upload_path1,$name1);
+                $att1 = '/profile_attach/'.$name1;
+            }else{
+                $att1= "";
+            }
+
+            if ($request->hasfile('AttachProposal')) {
+                $profile2 = $request->file('AttachProposal');
+                $upload_path2 =public_path().'/profile_attach/';
+                $name2 = Str::random(40).'AttachProposal'.time().'.'.$profile2->getClientOriginalExtension();
+                $profile2->move($upload_path2,$name2);
+                $att2 = '/profile_attach/'.$name2;
+            }else{
+                $att2= "";
+            }
+
+            if ($request->hasfile('AttachAppointed')) {
+                $profile3 = $request->file('AttachAppointed');
+                $upload_path3 =public_path().'/profile_attach/';
+                $name3 = Str::random(40).'AttachAppointed'.time().'.'.$profile3->getClientOriginalExtension();
+                $profile3->move($upload_path3,$name3);
+                $att3 = '/profile_attach/'.$name3;
+            }else{
+                $att3= "";
+            }
+
+            if ($request->hasfile('AttachIncreased')) {
+                $profile4 = $request->file('AttachIncreased');
+                $upload_path4 =public_path().'/profile_attach/';
+                $name4 = Str::random(40).'AttachIncreased'.time().'.'.$profile4->getClientOriginalExtension();
+                $profile4->move($upload_path4,$name4);
+                $att4 = '/profile_attach/'.$name4;
+            }else{
+                $att4= "";
+            }
+            $id=Auth::user()->profile->id;
+
+           $profile =Profile::findOrFail($id);
+           $profile->update(['user_id'=>request('user_id')]);
+           $profile->update(['CompanyName'=>request('CompanyName')]);   
+           $profile->update(['CompanyRegistrationNo'=>request('CompanyRegistrationNo')]);
+           $profile->update(['sector_id'=>request('sector_id')]);
+           $profile->update(['BusinessType'=>request('BusinessType')]);
+           $profile->update(['permit_type_id'=>request('permit_type_id')]);
+           $profile->update(['PermitNo'=>request('PermitNo')]);
+           $profile->update(['PermittedDate'=>request('PermittedDate')]);
+           $profile->update(['CommercializationDate'=>request('CommercializationDate')]);
+           $profile->update(['LandNo'=>request('LandNo')]);
+           $profile->update(['LandSurveyDistrictNo'=>request('LandSurveyDistrictNo')]);
+           $profile->update(['IndustrialZone'=>request('IndustrialZone')]);
+           $profile->update(['Township'=>request('Township')]);
+           $profile->update(['region_id'=>request('region_id')]);
+           $profile->update(['StaffLocalProposal'=>request('StaffLocalProposal')]);
+           $profile->update(['StaffForeignProposal'=>request('StaffForeignProposal')]);
+           $profile->update(['StaffLocalSurplus'=>request('StaffLocalSurplus')]);
+           $profile->update(['StaffForeignSurplus'=>request('StaffForeignSurplus')]);
+           $profile->update(['StaffLocalAppointed'=>request('StaffLocalAppointed')]);
+           $profile->update(['StaffForeignAppointed'=>request('StaffForeignAppointed')]);
+           $profile->update(['Status'=>0]);
+           $profile->update(['AttachPermit'=>$att1]);
+           $profile->update(['AttachProposal'=>$att2]);
+           $profile->update(['AttachAppointed'=>$att3]);
+           $profile->update(['AttachIncreased'=>$att4]);
+
+           Auth::user()->update(['Status'=>1]);
+
+            Toastr::success('Profile submitted. Please wait for admin approval!');
+
+            return redirect()->back();
+          } 	
+	else{
             Toastr::error('Profile already submitted. Please wait for admin approval!');
 
             return redirect()->back();

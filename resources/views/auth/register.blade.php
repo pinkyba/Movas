@@ -135,15 +135,6 @@
                             </div>
                         </div>
 
-                        <!-- --------------------------------------------------------------- -->
-                        <!-- <div class="form-group row mt-1">
-                            <label for="email_confirmation" class="col-md-4 col-form-label text-md-right">Confirm Company Email</label>
-
-                            <div class="col-md-7">
-                                <input id="email_confirmation" type="email" class="form-control" name="email_confirmation" required>
-                            </div>
-                        </div> -->
-                        <!-- -------------------------------------------------------------------- -->
                         <div class="form-group row mt-1">
                             <label for="password" class="col-md-4 col-form-label text-md-right">{{ __('Password') }}</label>
 

@@ -27,7 +27,7 @@
                 <tr>
                     <td class="col-md-1">{{$i++}}</td>
                     <td>{{$vde->Description}}</td>
-                    <td class="col-md-1"><a href="/ovas/public{{$vde->FilePath}}" class="btn btn-outline-primary">View File</a></td>
+                    <td class="col-md-1"><a href="/public{{$vde->FilePath}}" class="btn btn-outline-primary">View File</a></td>
                 </tr>
                 @empty
                 <tr>

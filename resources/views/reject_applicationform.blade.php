@@ -52,15 +52,19 @@
 }
 
 .mybutton {
-  background-color: #4CAF50 !important; /* Green */
-  border: none;
-  color: white;
-  padding: 15px 32px;
-  text-align: center;
-  text-decoration: none;
-  display: inline-block;
-  font-size: 16px;
+	/* background-color: #4CAF50 !important; */
+	background-color: #4CAF50; /* Green */
+	border: none;
+	color: white;
+	
+	text-align: center;
+	text-decoration: none;
+	display: inline-block;
+	font-size: 16px;
 }
+.modal-dialog {
+          max-width: 1000px; /* New width for default modal */
+     }
 </style>
 <script>
 	function validateFileSize(input) {
@@ -118,7 +122,7 @@
 				</div>
 			  
 			  <div class="col-md-2 col-sm-6">
-			  	<button type="submit" class="mybutton" id="applySubmit" style="margin-right: 20px;background-color: #4CAF50;" onclick="return confirm('Submit Now');" >Submit</button>
+			  	<a class="btn mybutton" id="applySubmit" style="margin-right: 20px;background-color: #4CAF50;" data-toggle="modal" data-target="#applicationModal" >Submit</a>
 			  </div>
 			</div>
 
@@ -134,7 +138,7 @@
 							<div class="col-6">
 								<fieldset class="form-group">
 									<label ><span class="mm">ကုမ္ပဏီအမည်</span><span class="eng">Company Name</span></label>
-									<input type="text" disabled value="{{$profile->CompanyName}}" class="form-control" name="CompanyName">
+									<input type="text" disabled value="{{$profile->CompanyName}}" class="form-control" name="CompanyName" id="comName">
 								</fieldset>
 							</div>
 							
@@ -240,10 +244,10 @@
 
 		                <!-- <div class="row mt-3">
 		                    <h3 class="text-center mt-3">ATTACHMENT</h3>
-		                </div> -->
+		                </div>
 		                
-						<!-- <div class="row mt-3">
-						    <span class="mm" style="color:red;"><b>မှတ်ချက်</b>: အောက်ပါအချက်များကို ပူးတွဲတင်ပြရန် (PDF ဖိုင်ဖြင့်သာ)</span><span class="eng" style="color:red;"><b>Note</b>: The following documents need to be attached (PDF File Only) </span>
+						<div class="row mt-3">
+						    <span class="mm" style="color:red;"><b>????????</b>: ??????????????????? ?????????????? (PDF ????????????)</span><span class="eng" style="color:red;"><b>Note</b>: The following documents need to be attached (PDF File Only) </span>
 		                    <br><br>
 		                    <p>License/Permit/Evidence from Government Agency. Business Contract with other Related Organization (if Any).</p>
 
@@ -263,9 +267,9 @@
                                 });
 
                             });
-                        </script>
+                        </script> -->
 
-                        <table class="table table-bordered" id="CompanyTable">
+                        <!-- <table class="table table-bordered" id="CompanyTable">
                             <tr>
                                 <th>File</th>
                                 <th>Description</th>
@@ -276,13 +280,13 @@
                                 <td><input type="text" name="Description[]" placeholder="Enter attachment description" class="form-control" /></td>
                                 <td><button type="button" name="add" id="add" class="btn btn-success">Add More</button></td>
                             </tr>
-                        </table>
-					</div> -->
+                        </table> -->
+					</div>
 
 				</div>
 				{{-- <button type="submit" class="btn btn-primary">Submit</button> --}}
 				{{-- <button type="button" class="btn btn-primary mb-3 mytab">Next</button> --}}
-			</div>
+			
 
 
 			@php
@@ -334,6 +338,23 @@
 				$aaae=1;
 				$aaaf=1;
 				$aaag=1;
+
+				$ld=1;
+				$lcd=1;
+				$lcd_id=1;
+				$lcdtype_id=1;
+				$stay_id=1;
+				$visa_id=1;
+				$person_id=1;
+				$nation_id=1;
+				$passport_id=1;
+				$alert_id=1;
+				$labour_alert=1;
+				$des_id=1;
+				$desmsg_id=1;
+				$file_id=1;
+				$allow_date_id=1;
+				$expire_date_id=1;
 			@endphp
 
 			@foreach ($visa_details as $vd)
@@ -348,14 +369,14 @@
 							<div class="col-6">
 								<fieldset class="form-group">
 									<label ><span class="mm">အမည်</span><span class="eng">Name</span></label>
-									<input type="text" class="form-control" name="PersonName{{$c++}}" value="{{$vd->PersonName}}" required>
+									<input type="text" class="form-control" name="PersonName{{$c++}}" value="{{$vd->PersonName}}" required id="PersonName{{$person_id++}}">
 								</fieldset>
 							</div>
 							
 							<div class="col">
 								<fieldset class="form-group">
 									<label ><span class="mm">နိုင်ငံသား</span><span class="eng">Nationality</span></label>
-									<select class="form-control" name="nationality_id{{$d++}}" required>
+									<select class="form-control" name="nationality_id{{$d++}}" required id="nationality_id{{$nation_id++}}">
 										<option value="">Choose</option>
 		                                @foreach($nationalities as $n)
 		                                <option value="{{$n->id}}" {{$vd->nationality_id == $n->id  ? 'selected' : ''}}>{{$n->NationalityName}}</option>
@@ -369,13 +390,13 @@
 							<div class="col">
 							    <fieldset class="form-group">
 									<label for="pxq13"><span class="mm">ပက်စ်ပို့နံပါတ်</span><span class="eng">Passport No</span></label>
-		    					    <input type="text" class="form-control" name="PassportNo{{$e++}}" id="pxq13" value="{{$vd->PassportNo}}" required>
+		    					    <input type="text" class="form-control PassportNo{{$passport_id++}}" name="PassportNo{{$e++}}" id="pxq13" value="{{$vd->PassportNo}}" required>
 								</fieldset>
 							</div>
 							<div class="col">
 							    <fieldset class="form-group">
 									<label for="pxq14"><span class="mm">MIC မှအတည်ပြုသည့်ရက်စွဲ</span><span class="eng">MIC Approve Date</span></label>
-		    					    <input type="date" class="form-control" name="StayAllowDate{{$f++}}" id="pxq14" value="{{$vd->StayAllowDate}}">
+		    					    <input type="date" class="form-control StayAllowDate{{$allow_date_id++}}" name="StayAllowDate{{$f++}}" id="pxq14" value="{{$vd->StayAllowDate}}">
 								</fieldset>
 							</div>
 							{{-- <div class="col">
@@ -388,7 +409,7 @@
 							<div class="col">
 								<fieldset class="form-group">
 									<label for="pxq15"><span class="mm">နေထိုင်ခွင့် သက်တမ်းကုန်ဆုံးမည့်နေ့</span><span class="eng">Stay Expire Date</span><span id="TwoMonthWarning{{$ja++}}" style="color:red;visibility: hidden;"><small><span class="mm">နှစ်လမတိုင်ခင်ထက်မစောစေရ</span><span class="eng">No More Than Two Months Ahead</span></small></span></label>
-									<input type="date" class="form-control" name="StayExpireDate{{$aaag++}}" id="pxq15" value="{{$vd->StayExpireDate}}" onchange="checkTwoMonth(this.value,'TwoMonthWarning{{$jb++}}')">
+									<input type="date" class="form-control StayExpireDate{{$expire_date_id++}}" name="StayExpireDate{{$aaag++}}" id="pxq15" value="{{$vd->StayExpireDate}}" onchange="checkTwoMonth(this.value,'TwoMonthWarning{{$jb++}}')">
 								</fieldset>
 							</div>
 							
@@ -432,7 +453,7 @@
 						<div class="row mt-5">
 							<div class="col">
 								<label ><span class="mm">ဗီဇာအမျိုးအစား</span><span class="eng">Visa Type</span></label>
-								<select class="form-control" name="visa_type_id{{$l++}}">
+								<select class="form-control" name="visa_type_id{{$l++}}" id="visa_type_id{{$visa_id++}}">
 									<option value="">Not Apply</option>
 	                                @foreach($visa_types as $vt)
 	                                <option value="{{$vt->id}}" {{$vd->visa_type_id == $vt->id  ? 'selected' : ''}}>{{$vt->VisaTypeName}}</option>
@@ -440,8 +461,8 @@
 	                            </select>
 							</div>
 							<div class="col">
-								<label ><span class="mm">နေထိုင်ရန်ကြာချိန်</span><span class="eng">Stay Duration</span></label>
-								<select class="form-control" name="stay_type_id{{$m++}}">
+								<label ><span class="mm">နေထိုင်ရန်ကြာချိန်</span><span class="eng">Stay Duration</span><small id="alertmsg{{$alert_id++}}" class="d-none text-danger"> * </small></label>
+								<select class="form-control" name="stay_type_id{{$m++}}" id="stay_type_id{{$stay_id++}}">
 									<option value="">Not Apply</option>
 	                                @foreach($stay_types as $st)
 	                                <option value="{{$st->id}}" {{$vd->stay_type_id == $st->id  ? 'selected' : ''}}>{{$st->StayTypeName}}</option>
@@ -449,13 +470,21 @@
 	                            </select>
 							</div>
 							<div class="col" id="labour_type{{$o++}}">
-								<label ><span class="mm">အလုပ်သမားကတ်အမျိုးအစား</span><span class="eng">Labour Card Type</span></label>
-								<select class="form-control" name="labour_card_type_id{{$zz++}}">
+								<label ><span class="mm">အလုပ်သမားကတ်အမျိုးအစား</span><span class="eng">Labour Card Type</span><small class="text-danger d-none" id="labouralert{{$labour_alert++}}"> * </small></label>
+								<select class="form-control" name="labour_card_type_id{{$zz++}}" id="labour_card_type_id{{$lcdtype_id++}}">
 									<option value="">Not Apply</option>
 	                                @foreach($labour_card_types as $lct)
 	                                <option value="{{$lct->id}}" {{$vd->labour_card_type_id == $lct->id  ? 'selected' : ''}}>{{$lct->LabourCardTypeName}}</option>
 	                                @endforeach
 	                            </select>
+							</div>
+							<div class="col" id="labourduration{{$ld++}}" >
+								<label ><span class="mm">နေထိုင်ရန်ကြာချိန်</span><span class="eng">Labour Stay Duration </span></label>
+								<select class="form-control" name="labour_card_duration{{$lcd++}}" id="labour_card_duration{{$lcd_id++}}">
+									@foreach($labour_card_duration as $lcdd)
+									<option value="{{$lcdd->id}}" {{$vd->labour_card_duration_id == $lcdd->id  ? 'selected' : ''}}>{{$lcdd->LabourCardDuration}}</option>
+									@endforeach
+								</select>
 							</div>
 						</div>
 
@@ -521,26 +550,162 @@
                         <table class="table table-bordered" id="ApplicantTable{{$v++}}">
                             <tr>
                                 <th>File</th>
-                                <th>Description</th>
+                                <th>Description<span class="text-danger d-none" id="desmsg{{$desmsg_id++}}"> * </span></th>
                                 <th>Action</th>
                             </tr>
                             <tr>
-                                <td><input type="file" onchange="validateFileSize(this);" accept=".pdf" name="FilePath{{$ccc++}}[]" placeholder="Enter your Name" class="form-control" /></td>
-                                <td><input type="text" name="Description{{$ddd++}}[]" placeholder="Enter attachment description" class="form-control" /></td>
+                                <td><input type="file" onchange="validateFileSize(this);" accept=".pdf" name="FilePath{{$ccc++}}[]" placeholder="Enter your Name" class="form-control" id="file{{$file_id++}}"/></td>
+                                <td><input type="text" name="Description{{$ddd++}}[]" placeholder="Enter attachment description" class="form-control" id="des{{$des_id++}}" /></td>
                                 <td><button type="button" name="add_applicant_attach{{$w++}}" id="add_applicant_attach{{$x++}}" class="btn btn-success">Add More</button></td>
                             </tr>
                         </table>
+				 <div class="col-3">
+                        	<a href="{{ route('applicant.deny',$vd->id) }}" class="btn btn-danger mt-4 mb-3"  onclick="return confirm('Are you sure you want to delete?')" ><i class="fas fa-trash-alt"></i> Delete</a>
+                        </div>
 					</div>
 					{{-- <button type="submit" class="btn btn-primary">Submit</button> --}}
 				</div>
 			@endforeach
 			
 
-			
-			</form>
 			</div>
+
+			<!-- Modal -->
+			<div class="modal fade" id="applicationModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true" >
+			  <div class="modal-dialog" role="document">
+			    <div class="modal-content">
+			      <div class="modal-header">
+			        <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+			        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+			          <span aria-hidden="true">&times;</span>
+			        </button>
+			      </div>
+			      
+			      <div class="modal-body">
+			        <div class="row mt-3" id="checkTitle">
+			        </div>
+
+					<table class="table table-bordered table-responsive mt-2" id="TableHeader">
+						<thead>
+							<tr>
+								<th>စဉ်</th>
+								<th>အမည်/ရာထူး</th>
+								<th>နိုင်ငံသား</th>
+								<th>နိုင်ငံကူးလက်မှတ်</th>
+								<th>စတင်ခန့်ထားသည့်ရက်စွဲ</th>
+								<th>နေထိုင်ခွင့် ကုန်ဆုံးမည့်နေ</th>
+								<th>ပြည်ဝင်ခွင့်</th>
+								<th>နေထိုင်ခွင့်</th>
+								<th>အလုပ်သမားကဒ်/သက်တမ်း</th>
+							</tr>
+						</thead>
+						<tbody id="bodyhtml">
+							
+						</tbody>
+					</table>
+					
+			      </div>
+
+			      <div class="modal-footer">
+			        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>	
+
+			        <button type="submit" class="btn btn-primary mybutton" id="btnsave" style="background-color: #4CAF50; ">Save</button>
+			      </div>
+			    </div>
+			  </div>
+			</div>
+
+			</form>
+			
+
 			<script src="{{ asset('js/applyform.js') }}"></script>
+
 			<script type="text/javascript">
+				$(document).ready(function(){
+					if($('#applicantType1').val() == "4"){
+						$('#dependant1').show();
+						$('#labourduration1').hide();
+					}
+					if($('#applicantType2').val() == "4"){
+						$('#dependant2').show();
+						$('#labourduration2').hide();
+					}
+					if($('#applicantType3').val() == "4"){
+						$('#dependant3').show();
+						$('#labourduration3').hide();
+					}
+					if($('#applicantType4').val() == "4"){
+						$('#dependant4').show();
+						$('#labourduration4').hide();
+					}
+					if($('#applicantType5').val() == "4"){
+						$('#dependant5').show();
+						$('#labourduration5').hide();
+					}
+					if($('#applicantType6').val() == "4"){
+						$('#dependant6').show();
+						$('#labourduration6').hide();
+					}
+					if($('#applicantType7').val() == "4"){
+						$('#dependant7').show();
+						$('#labourduration7').hide();
+					}
+					
+				})
+			</script>
+
+			<script type="text/javascript">
+
+				$('#labour_card_type_id1').change(function(){
+					if($(this).val() != '' ){
+						$('#labourduration1').show();
+					}else{
+						$('#labourduration1').hide();
+					}
+				})
+				$('#labour_card_type_id2').change(function(){
+					if($(this).val() != '' ){
+						$('#labourduration2').show();
+					}else{
+						$('#labourduration2').hide();
+					}
+				})
+				$('#labour_card_type_id3').change(function(){
+					if($(this).val() != '' ){
+						$('#labourduration3').show();
+					}else{
+						$('#labourduration3').hide();
+					}
+				})
+				$('#labour_card_type_id4').change(function(){
+					if($(this).val() != '' ){
+						$('#labourduration4').show();
+					}else{
+						$('#labourduration4').hide();
+					}
+				})
+				$('#labour_card_type_id5').change(function(){
+					if($(this).val() != '' ){
+						$('#labourduration5').show();
+					}else{
+						$('#labourduration5').hide();
+					}
+				})
+				$('#labour_card_type_id6').change(function(){
+					if($(this).val() != '' ){
+						$('#labourduration6').show();
+					}else{
+						$('#labourduration6').hide();
+					}
+				})
+				$('#labour_card_type_id7').change(function(){
+					if($(this).val() != '' ){
+						$('#labourduration7').show();
+					}else{
+						$('#labourduration7').hide();
+					}
+				})
+
 				function localTotal() {
 			        var StaffLocalProposal = checkNaN(document.getElementById('StaffLocalProposal').value);
 			        var StaffLocalSurplus = checkNaN(document.getElementById('StaffLocalSurplus').value);
@@ -578,90 +743,7 @@
 			    }
 
 	function checkTwoMonth(expireDate,sourceID){
-		const d = new Date();
-		var newDate = new Date(d.setMonth(d.getMonth()+2)).toISOString().split('T')[0];
-
-		var b = document.getElementById("applySubmit");
-		if (newDate < expireDate) {
-			b.disabled = true;
-	    	b.style.background = "lightgrey"; //"#dc3545";
-	    	var Mytab0 = document.getElementById("Mytab0");
-	    	var Mytab1 = document.getElementById("Mytab1");
-	    	var Mytab2 = document.getElementById("Mytab2");
-	    	var Mytab3 = document.getElementById("Mytab3");
-	    	var Mytab4 = document.getElementById("Mytab4");
-	    	var Mytab5 = document.getElementById("Mytab5");
-	    	var Mytab6 = document.getElementById("Mytab6");
-	    	var Mytab7 = document.getElementById("Mytab7");
-
-	    	if(Mytab0){
-	    		document.getElementById("Mytab0").disabled = true;
-	    	}
-	    	if(Mytab1){
-	    		document.getElementById("Mytab1").disabled = true;
-	    	}
-	    	if(Mytab2){
-	    		document.getElementById("Mytab2").disabled = true;
-	    	}
-	    	if(Mytab3){
-	    		document.getElementById("Mytab3").disabled = true;
-	    	}
-	    	if(Mytab4){
-	    		document.getElementById("Mytab4").disabled = true;
-	    	}
-	    	if(Mytab5){
-	    		document.getElementById("Mytab5").disabled = true;
-	    	}
-	    	if(Mytab6){
-	    		document.getElementById("Mytab6").disabled = true;
-	    	}
-	    	if(Mytab7){
-	    		document.getElementById("Mytab7").disabled = true;
-	    	}
-	    	
-
-	    	// document.getElementById("TwoMonthWarning1").style.visibility = "visible";
-	    	document.getElementById(sourceID).style.visibility = "visible";
-	    } else {
-	    	b.disabled = false;
-	    	b.style.background = "#4CAF50";
-
-	    	var Mytab0 = document.getElementById("Mytab0");
-	    	var Mytab1 = document.getElementById("Mytab1");
-	    	var Mytab2 = document.getElementById("Mytab2");
-	    	var Mytab3 = document.getElementById("Mytab3");
-	    	var Mytab4 = document.getElementById("Mytab4");
-	    	var Mytab5 = document.getElementById("Mytab5");
-	    	var Mytab6 = document.getElementById("Mytab6");
-	    	var Mytab7 = document.getElementById("Mytab7");
-
-	    	if(Mytab0){
-	    		document.getElementById("Mytab0").disabled = false;
-	    	}
-	    	if(Mytab1){
-	    		document.getElementById("Mytab1").disabled = false;
-	    	}
-	    	if(Mytab2){
-	    		document.getElementById("Mytab2").disabled = false;
-	    	}
-	    	if(Mytab3){
-	    		document.getElementById("Mytab3").disabled = false;
-	    	}
-	    	if(Mytab4){
-	    		document.getElementById("Mytab4").disabled = false;
-	    	}
-	    	if(Mytab5){
-	    		document.getElementById("Mytab5").disabled = false;
-	    	}
-	    	if(Mytab6){
-	    		document.getElementById("Mytab6").disabled = false;
-	    	}
-	    	if(Mytab7){
-	    		document.getElementById("Mytab7").disabled = false;
-	    	}
-	    	// document.getElementById("TwoMonthWarning1").style.visibility = "hidden";
-	    	document.getElementById(sourceID).style.visibility = "hidden";
-	    }
+		
 	}
 
 	function checkAge(id1,id2,id3){

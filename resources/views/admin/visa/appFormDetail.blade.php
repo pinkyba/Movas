@@ -159,7 +159,7 @@ p{line-height: 200%; font-size: 17px;}
 					<p>အကြောင်းအရာ ။</p>
 				</div>
 				<div class="col-md-10">
-					<p><strong>{{$data->profile->CompanyName}} မှ {{$data->Subject}}</strong></p>
+					<p><strong>{{$data->CompanyName}} မှ {{$data->Subject}}</strong></p>
 				</div>
 			</div>
 
@@ -171,7 +171,7 @@ p{line-height: 200%; font-size: 17px;}
 					<p>ကုမ္ပဏီအမည် : </p>
 				</div>
 				<div class="col-md-9">
-					<p>{{$data->profile->CompanyName}}</p>
+					<p>{{$data->CompanyName}}</p>
 				</div>
 			</div>
 
@@ -183,7 +183,7 @@ p{line-height: 200%; font-size: 17px;}
 					<p>လုပ်ငန်းအမျိုးအစား : </p>
 				</div>
 				<div class="col-md-9">
-					<p>{{$data->profile->BusinessType}}</p>
+					<p>{{$data->BusinessType}}</p>
 				</div>
 			</div>
 
@@ -199,7 +199,7 @@ p{line-height: 200%; font-size: 17px;}
 					@endif
 				</div>
 				<div class="col-md-9">
-					<p>{{$data->profile->PermitNo}}</p>
+					<p>{{$data->PermitNo}}</p>
 				</div>
 			</div>
 
@@ -211,7 +211,7 @@ p{line-height: 200%; font-size: 17px;}
 					<p>တည်နေရာ : </p>
 				</div>
 				<div class="col-md-9">
-					<p>{{$data->profile->Township}}</p>
+					<p>{{$data->Township}}</p>
 				</div>
 			</div>
 
@@ -348,12 +348,12 @@ p{line-height: 200%; font-size: 17px;}
 							<th>စဉ်</th>
 							<th>အမည်/ရာထူး</th>
 							<th>နိုင်ငံသား</th>
-							<th>နိုင်ငံကူး<br>လက်မှတ်</th>
-							<th>စတင်ခန့်ထား<br>သည့်ရက်စွဲ</th>
-							<th>နေထိုင်ခွင့် <br>ကုန်ဆုံးမည့်နေ</th>
+							<th>နိုင်ငံကူးလက်မှတ်</th>
+							<th>စတင်ခန့်ထားသည့်ရက်စွဲ</th>
+							<th>နေထိုင်ခွင့် ကုန်ဆုံးမည့်နေ</th>
 							<th>ပြည်ဝင်ခွင့်</th>
 							<th>နေထိုင်ခွင့်</th>
-							<th>အလုပ်သမားကဒ်/<br>သက်တမ်း</th>
+							<th>အလုပ်သမားကဒ်</th>
 							<th></th>
 						</tr>
 					</thead>
@@ -390,7 +390,7 @@ p{line-height: 200%; font-size: 17px;}
 								<td>{{ \Carbon\Carbon::parse($vd->StayExpireDate)->format('d M Y') }}</td>
 								<td>{{$vd->visa_type->VisaTypeNameMM ?? '-'}}</td>
 								<td>{{$vd->stay_type->StayTypeNameMM ?? '-'}}</td>
-								<td>{{$vd->labour_card_type->LabourCardTypeMM ?? 'မှီခို'}}/{{$vd->labour_card_duration->LabourCardDurationMM ?? '-'}}</td>
+								<td>{{$vd->labour_card_type->LabourCardTypeMM ?? '-'}}</td>
 								<td>
 									<a href="{{ route('visa_detail_attach',$vd->id) }}" class="btn btn-outline-primary" >. . .</a>
 								</td>
@@ -532,7 +532,7 @@ p{line-height: 200%; font-size: 17px;}
 			<span>အကြောင်းအရာ။</span>		
 		</div>
 		<div class="col">
-			<span style="font-weight: bold;">{{$data->profile->CompanyName}}  မှ {{$data->Subject}}</span>
+			<span style="font-weight: bold;">{{$data->CompanyName}}  မှ {{$data->Subject}}</span>
 		</div>
 	</div>
 
@@ -541,7 +541,7 @@ p{line-height: 200%; font-size: 17px;}
 			<span>ရည်ညွှန်းချက်။</span>		
 		</div>
 		<div class="col" style="font-weight: bold;">
-			<span>{{$data->profile->CompanyName}} ၏ (</span>
+			<span>{{$data->CompanyName}} ၏ (</span>
 			<span id="FinalApplyDate"></span>
 			<span>) ရက်စွဲပါစာ</span>
 		</div>
@@ -551,14 +551,14 @@ p{line-height: 200%; font-size: 17px;}
 		<div class="col" style="text-align: justify;
   text-justify: inter-word;">
 			<span>၁။	 </span>
-			<span class="ml-5" style="line-height:200%;">{{$data->profile->CompanyName}} သည် {{$data->Township}} တွင် {{$data->profile->permit_type->PermitType}} ၏ 
+			<span class="ml-5" style="line-height:200%;">{{$data->CompanyName}} သည် {{$data->Township}} တွင် {{$data->profile->permit_type->PermitType}} ၏ 
 			</span>
 			<span id="PermitDate"></span>
 			<span> ရက်စွဲပါ @if ($data->profile->permit_type_id == 1)
 						ခွင့်ပြုမိန့်
 					@else
 						အတည်ပြုမိန့်
-					@endif အမှတ် {{$data->profile->PermitNo}} အရ {{$data->profile->BusinessType}} ကို ဆောင်ရွက် လျက်ရှိပါသည်။</span>		
+					@endif အမှတ် {{$data->PermitNo}} အရ {{$data->BusinessType}} ကို ဆောင်ရွက် လျက်ရှိပါသည်။</span>		
 		</div>
 	</div>
 
@@ -578,11 +578,11 @@ p{line-height: 200%; font-size: 17px;}
 						<th>စဉ်</th>
 						<th>အမည်/ရာထူး</th>
 						<th>နိုင်ငံသား</th>
-						<th>နိုင်ငံကူး<br>လက်မှတ်အမှတ်</th>
-						<th>နေထိုင်ခွင့် <br>သက်တမ်းကုန်ဆုံးမည့်နေ့</th>
+						<th>နိုင်ငံကူးလက်မှတ်အမှတ်</th>
+						<th>နေထိုင်ခွင့် သက်တမ်းကုန်ဆုံးမည့်နေ့</th>
 						<th>ပြည်ဝင်ခွင့်</th>
 						<th>နေထိုင်ခွင့်</th>
-						<th>အလုပ်သမားကဒ်/<br>သက်တမ်း</th>
+						<th>အလုပ်သမားကဒ်</th>
 						<th></th>
 					</tr>
 				</thead>
@@ -613,7 +613,7 @@ p{line-height: 200%; font-size: 17px;}
 								<td>{{ \Carbon\Carbon::parse($vd->StayExpireDate)->format('d M Y') }}</td>
 								<td>{{$vd->visa_type->VisaTypeNameMM ?? '-'}}</td>
 								<td>{{$vd->stay_type->StayTypeNameMM ?? '-'}}</td>
-								<td>{{$vd->labour_card_type->LabourCardTypeMM ?? 'မှီခို'}}/{{$vd->labour_card_duration->LabourCardDurationMM ?? '-'}}</td>
+								<td>{{$vd->labour_card_type->LabourCardTypeMM ?? '-'}}</td>
 								
 								<td><a href="{{ route('visa_detail_attach',$vd->id) }}" class="btn btn-outline-primary" >. . .</a></td>
 							</tr>
@@ -898,7 +898,7 @@ p{line-height: 200%; font-size: 17px;}
 			<span>အကြောင်းအရာ။</span>		
 		</div>
 		<div class="col">
-			<span style="font-weight: bold;">{{$data->profile->CompanyName}}  မှ {{$data->Subject}}</span>
+			<span style="font-weight: bold;">{{$data->CompanyName}}  မှ {{$data->Subject}}</span>
 		</div>
 	</div>
 
@@ -907,7 +907,7 @@ p{line-height: 200%; font-size: 17px;}
 			<span>ရည်ညွှန်းချက်။</span>		
 		</div>
 		<div class="col">
-			<span style="font-weight: bold;"><span>{{$data->profile->CompanyName}} ၏ (</span>
+			<span style="font-weight: bold;"><span>{{$data->CompanyName}} ၏ (</span>
 			<span id="FinalApplyDate"></span>
 			<span>) ရက်စွဲပါစာ</span>
 		</div>
@@ -919,14 +919,14 @@ p{line-height: 200%; font-size: 17px;}
 			<span>၁။	 </span>
 			<div class="col">
 			<span>၁။	 </span>
-			<span class="ml-5" style="line-height:200%;">{{$data->profile->CompanyName}} သည် {{$data->Township}} တွင် {{$data->profile->permit_type->PermitType}} ၏ 
+			<span class="ml-5" style="line-height:200%;">{{$data->CompanyName}} သည် {{$data->Township}} တွင် {{$data->profile->permit_type->PermitType}} ၏ 
 			</span>
 			<span id="PermitDate"></span>
 			<span> ရက်စွဲပါ @if ($data->profile->permit_type_id == 1)
 						ခွင့်ပြုမိန့်
 					@else
 						အတည်ပြုမိန့်
-					@endif အမှတ် {{$data->profile->PermitNo}} အရ {{$data->profile->BusinessType}} ကို ဆောင်ရွက် လျက်ရှိပါသည်။</span>		
+					@endif အမှတ် {{$data->PermitNo}} အရ {{$data->BusinessType}} ကို ဆောင်ရွက် လျက်ရှိပါသည်။</span>		
 		</div>		
 		</div>
 	</div>

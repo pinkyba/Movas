@@ -56,16 +56,12 @@
 	background-color: #4CAF50; /* Green */
 	border: none;
 	color: white;
-	
+	padding: 15px 32px;
 	text-align: center;
 	text-decoration: none;
 	display: inline-block;
 	font-size: 16px;
 }
-
-.modal-dialog {
-          max-width: 1000px; /* New width for default modal */
-     }
 </style>
 <script>
 	function validateFileSize(input) {
@@ -83,7 +79,6 @@
     @endforeach
 	<div class="container mt-3 mb-4">
 		{{-- <h3 class="text-center">Application Form</h3> --}}
-		<p class="text-danger text-center d-none" id="disableMsg"> <strong>Please wait until your previous form approve!</strong></p>
 		<div class="tab row">
 			<div class="col-md-10 col-sm-6">
 				<button class="tablinks active company" type="button" id="Mytab0" onclick="openCity(event, 'Company')">Company</button>
@@ -96,20 +91,19 @@
 				<button class="tablinks applicant7" type="button" id="Mytab7" onclick="openCity(event, 'Applicant7')" style="display: none;">Applicant - 7</button>
 			</div>
 
-			<div class="col-md-2 col-sm-6">	
-				<a class="btn mybutton" id="applySubmit" style="margin-right: 20px;background-color: #4CAF50;" data-toggle="modal" data-target="#applicationModal" >Submit</a>
+			<div class="col-md-2 col-sm-6">
+				<button type="submit" class="mybutton" id="applySubmit" style="margin-right: 20px;background-color: #4CAF50;" onclick="return confirm('Submit Now');" >Submit</button>
 				<a class="btn-outline-success btn btn-sm" id="add_tab" onclick="ShowTab()"><i class="fa fa-plus" aria-hidden="true"></i></a>
 				<a class="btn-outline-danger btn btn-sm" id="remove_tab" onclick="HideTab()"><i class="fa fa-minus" aria-hidden="true"></i></a>
 			</div>
 
 		</div>
-		
-		
+
 		<div id="Company" class="tabcontent" style="display: block;">
 
 			<input type="hidden" value="{{Auth::user()->id}}" name="user_id">
 			<input type="hidden" value="{{$profile->id}}" name="profile_id">
-			<div class="container mb-5">
+			<div class="container mb-5" style="">
 				<h3 class="text-center mt-4"><span class="mm">ကုမ္ပဏီအချက်အလက်</span><span class="eng">COMPANY PROFILE</span></h3>
 				<br/>
 
@@ -117,7 +111,7 @@
 					<div class="col-6">
 						<fieldset class="form-group">
 							<label ><span class="mm">ကုမ္ပဏီအမည်</span><span class="eng">Company Name</span></label>
-							<input type="text" disabled value="{{$profile->CompanyName}}" class="form-control" name="CompanyName" id="comName">
+							<input type="text" disabled value="{{$profile->CompanyName}}" class="form-control" name="CompanyName">
 						</fieldset>
 					</div>
 
@@ -221,24 +215,24 @@
 
 				<br/>
 
-				<div class="row mt-3">
+<!-- 				<div class="row mt-3">
 					<h3 class="text-center mt-3">ATTACHMENT</h3>
 				</div>
 
 				<div class="row mt-3">
-					<span class="mm" style="color:red;"><b>မှတ်ချက်</b>: အောက်ပါအချက်များကို ပူးတွဲတင်ပြရန် (PDF ဖိုင်ဖြင့်သာ)</span><span class="eng" style="color:red;"><b>Note:</b> The following documents need to be attached (PDF File Only) </span>
+					<span class="mm" style="color:red;"><b>????????</b>: ??????????????????? ?????????????? (PDF ????????????)</span><span class="eng" style="color:red;"><b>Note:</b> The following documents need to be attached (PDF File Only) </span>
 					<br>
 
 					{{-- <div class="col">
 						<fieldset class="form-group">
-							<label for="pxq11"><span class="mm">E-Visaပါရှိသော် ပါတ်စ်ပို့၏ အရှေ့စာမျက်နာ . အနောက်စာမျက်နာ နှင့် ဗီဇာတံဆိပ်ခေါင်းစာမျက်နှာ မိတ္တူ </span><span class="eng">Copy of passport first page. Lastest page and visa stamp page with (E-Visa)</span></label>
+							<label for="pxq11"><span class="mm">E-Visa????????? ??????????? ????????????? . ?????????????? ????? ????????????????????????? ?????? </span><span class="eng">Copy of passport first page. Lastest page and visa stamp page with (E-Visa)</span></label>
 							<input type="file" onchange="validateFileSize(this);" accept=".pdf" class="form-control" name="applicant_att1a" id="pxq11" accept=".pdf">
 						</fieldset>
 					</div>
 					<div class="col">
 						<fieldset class="form-group">
-							<label for="pxq12"><span class="mm">စာချုပ်/လက်မှတ်</span><span class="eng">Contract/Certificate</span></label>
-							<small class="text-danger"><span class="mm">သင်ကညွှန်ကြားသူမဟုတ်၊ အစုရှယ်ယာရှင်မဟုတ်လျှင်သာထောက်ပံ့သည်။</span><span class="eng">Provied only if you are not adirector or shareholder.</span></small>
+							<label for="pxq12"><span class="mm">???????/???????</span><span class="eng">Contract/Certificate</span></label>
+							<small class="text-danger"><span class="mm">????????????????????? ?????????????????????????????????????</span><span class="eng">Provied only if you are not adirector or shareholder.</span></small>
 							<input type="file" onchange="validateFileSize(this);" accept=".pdf" class="form-control" name="applicant_att1b" id="pxq12" accept=".pdf">
 						</fieldset>
 					</div> --}}
@@ -272,7 +266,8 @@
 							<td><button type="button" name="add" id="add" class="btn btn-success">Add More</button></td>
 						</tr>
 					</table>
-				</div>
+				</div> -->
+
 
 			</div>
 			{{-- <button type="submit" class="btn btn-primary">Submit</button> --}}
@@ -287,17 +282,17 @@
 				<div class="col-6">
 					<fieldset class="form-group">	
 						<label ><span class="mm">နာမည်</span><span class="eng">Name</span></label>
-						<input type="text" class="form-control" name="PersonName1"  id="PersonName1" required>
+						<input type="text" class="form-control" name="PersonName1" required>
 					</fieldset>
 				</div>
 
 				<div class="col">
 					<fieldset class="form-group">
 						<label ><span class="mm">နိုင်ငံသား</span><span class="eng">Nationality</span></label>
-						<select class="form-control" name="nationality_id1" required id="nationality_id1">
+						<select class="form-control" name="nationality_id1" required>
 							<option value="">Choose</option>
 							@foreach($nationalities as $n)
-							<option value="{{$n->id}}" >{{$n->NationalityName}}</option>
+							<option value="{{$n->id}}">{{$n->NationalityName}}</option>
 							@endforeach
 						</select>
 					</fieldset>
@@ -308,20 +303,19 @@
 				<div class="col">
 					<fieldset class="form-group">
 						<label for="pxq13"><span class="mm">ပက်စ်ပို့နံပါတ်</span><span class="eng">Passport No</span></label>
-						<input type="text" class="form-control PassportNo1" name="PassportNo1" id="pxq13" required>
+						<input type="text" class="form-control" name="PassportNo1" id="pxq13" required>
 					</fieldset>
 				</div>
 				<div class="col">
 					<fieldset class="form-group">
 						<label for="pxq14"><span class="mm">MIC မှအတည်ပြုသည့်ရက်စွဲ</span><span class="eng">MIC Approve Date</span></label>
-						<input type="date" class="form-control StayAllowDate1" name="StayAllowDate1" id="pxq14">
+						<input type="date" class="form-control" name="StayAllowDate1" id="pxq14">
 					</fieldset>
 				</div>
 				<div class="col">
 					<fieldset class="form-group">
 						<label for="pxq15"><span class="mm">နေထိုင်ခွင့် သက်တမ်းကုန်ဆုံးမည့်နေ့</span><span class="eng">Stay Expire Date</span><span id="TwoMonthWarning1" style="color:red;visibility: hidden;"><small><span class="mm">နှစ်လမတိုင်ခင်ထက်မစောစေရ</span><span class="eng">No More Than Two Months Ahead</span></small></span></label>
-						<input type="date" class="form-control StayExpireDate1" name="StayExpireDate1" id="pxq15" onchange="checkTwoMonth(this.value,'TwoMonthWarning1')">
-						<!-- <input type="date" class="form-control" name="StayExpireDate1" id="pxq15" onchange="checkTwoMonth(this.value,'TwoMonthWarning1')"> -->
+						<input type="date" class="form-control" name="StayExpireDate1" id="pxq15" onchange="checkTwoMonth(this.value,'TwoMonthWarning1')">
 					</fieldset>
 				</div>
 
@@ -367,7 +361,7 @@
 			<div class="row mt-5">
 				<div class="col">
 					<label ><span class="mm">Visa အမျိုးအစား</span><span class="eng">Visa Type</span></label>
-					<select class="form-control" name="visa_type_id1" id="visa_type_id1">
+					<select class="form-control" name="visa_type_id1">
 						<option value="">Not Apply</option>
 						@foreach($visa_types as $vt)
 						<option value="{{$vt->id}}">{{$vt->VisaTypeName}}</option>
@@ -375,8 +369,8 @@
 					</select>
 				</div>
 				<div class="col">
-					<label ><span class="mm">နေထိုင်ရန်ကြာချိန်</span><span class="eng">Stay Duration</span><small id="alertmsg1" class="d-none text-danger"> * </small></label>
-					<select class="form-control" name="stay_type_id1" id="stay_type_id1">
+					<label ><span class="mm">နေထိုင်ရန်ကြာချိန်</span><span class="eng">Stay Duration</span></label>
+					<select class="form-control" name="stay_type_id1">
 						<option value="">Not Apply</option>
 						@foreach($stay_types as $st)
 						<option value="{{$st->id}}">{{$st->StayTypeName}}</option>
@@ -385,20 +379,11 @@
 				</div>
 				<div class="col" id="labour_type1">
 					<label ><span class="mm">
-					အလုပ်သမားကတ်အမျိုးအစား</span><span class="eng">Labour Card Type</span><small class="text-danger d-none" id="labouralert1"> * </small></label>
-					<select class="form-control" name="labour_card_type_id1" id="labour_card_type_id1">
+					အလုပ်သမားကတ်အမျိုးအစား</span><span class="eng">Labour Card Type</span></label>
+					<select class="form-control" name="labour_card_type_id1">
 						<option value="">Not Apply</option>
 						@foreach($labour_card_types as $lct)
 						<option value="{{$lct->id}}">{{$lct->LabourCardTypeName}}</option>
-						@endforeach
-					</select>
-					
-				</div>
-				<div class="col" id="labourduration1" style="display: none;">
-					<label ><span class="mm">နေထိုင်ရန်ကြာချိန်</span><span class="eng">Labour Stay Duration </span></label>
-					<select class="form-control" name="labour_card_duration1" id="labour_card_duration1">
-						@foreach($labour_card_duration as $lcd)
-						<option value="{{$lcd->id}}">{{$lcd->LabourCardDuration}}</option>
 						@endforeach
 					</select>
 				</div>
@@ -469,15 +454,12 @@
 				<table class="table table-bordered" id="ApplicantTable1">
 					<tr>
 						<th>File</th>
-						<th>Description <span class="text-danger d-none" id="desmsg1"> * </span></th>
+						<th>Description</th>
 						<th>Action</th>
 					</tr>
 					<tr>
-						<td><input type="file" onchange="validateFileSize(this);" accept=".pdf" name="FilePath1[]" placeholder="Enter your Name" class="form-control" id="file1" /></td>
-						<td>
-							<input type="text" name="Description1[]" placeholder="Enter attachment description" class="form-control" id="des1" />
-							
-						</td>
+						<td><input type="file" onchange="validateFileSize(this);" accept=".pdf" name="FilePath1[]" placeholder="Enter your Name" class="form-control" /></td>
+						<td><input type="text" name="Description1[]" placeholder="Enter attachment description" class="form-control" /></td>
 						<td><button type="button" name="add_applicant_attach1" id="add_applicant_attach1" class="btn btn-success">Add More</button></td>
 					</tr>
 				</table>
@@ -493,14 +475,14 @@
 				<div class="col-6">
 					<fieldset class="form-group">
 						<label ><span class="mm">နာမည်</span><span class="eng">Name</span></label>
-						<input type="text" class="form-control" name="PersonName2" id="PersonName2">
+						<input type="text" class="form-control" name="PersonName2">
 					</fieldset>
 				</div>
 
 				<div class="col">
 					<fieldset class="form-group">
 						<span class="mm">နိုင်ငံသား</span><span class="eng">Nationality</span>
-						<select class="form-control" name="nationality_id2" id="nationality_id2">
+						<select class="form-control" name="nationality_id2">
 							<option value="">Choose</option>
 							@foreach($nationalities as $n)
 							<option value="{{$n->id}}">{{$n->NationalityName}}</option>
@@ -514,13 +496,13 @@
 				<div class="col">
 					<fieldset class="form-group">
 						<label for="pxq13"><span class="mm">ပက်စ်ပို့နံပါတ်</span><span class="eng">Passport No</span></label>
-						<input type="text" class="form-control PassportNo2" name="PassportNo2" id="pxq13">
+						<input type="text" class="form-control" name="PassportNo2" id="pxq13">
 					</fieldset>
 				</div>
 				<div class="col">
 					<fieldset class="form-group">
 						<label for="pxq14"><span class="mm">MIC မှအတည်ပြုသည့်ရက်စွဲ</span><span class="eng">MIC Approve Date</span></label>
-						<input type="date" class="form-control StayAllowDate2" name="StayAllowDate2" id="pxq14">
+						<input type="date" class="form-control" name="StayAllowDate2" id="pxq14">
 					</fieldset>
 				</div>
 				<div class="col">
@@ -528,7 +510,7 @@
 						<!-- <label for="pxq15"><span class="mm">နေထိုင်ခွင့် သက်တမ်းကုန်ဆုံးမည့်နေ့</span><span class="eng">Stay Expire Date</span></label>
 						<input type="date" class="form-control" name="StayExpireDate2" id="pxq15"> -->
 						<label for="pxq15"><span class="mm">နေထိုင်ခွင့် သက်တမ်းကုန်ဆုံးမည့်နေ့</span><span class="eng">Stay Expire Date</span><span id="TwoMonthWarning2" style="color:red;visibility: hidden;"><small><span class="mm">နှစ်လမတိုင်ခင်ထက်မစောစေရ</span><span class="eng">No More Than Two Months Ahead</span></small></span></label>
-						<input type="date" class="form-control StayExpireDate2" name="StayExpireDate2" id="pxq15" onchange="checkTwoMonth(this.value,'TwoMonthWarning2')">
+						<input type="date" class="form-control" name="StayExpireDate2" id="pxq15" onchange="checkTwoMonth(this.value,'TwoMonthWarning2')">
 					</fieldset>
 				</div>
 
@@ -572,8 +554,8 @@
 			<div class="row mt-5">
 				<div class="col">
 					<label >Visa Type<span class="mm">Visa အမျိုးအစား</span><span class="eng">Visa Type</span></label>
-					<select class="form-control" name="visa_type_id2" id="visa_type_id2">
-						<option value="">Choose</option>
+					<select class="form-control" name="visa_type_id2">
+						<option value="">Not Apply</option>
 						@foreach($visa_types as $vt)
 						<option value="{{$vt->id}}">{{$vt->VisaTypeName}}</option>
 						@endforeach
@@ -581,8 +563,8 @@
 				</div>
 				<div class="col">
 					<label ><span class="mm">နေထိုင်ရန်ကြာချိန်</span><span class="eng">Stay Duration</span></label>
-					<select class="form-control" name="stay_type_id2" id="stay_type_id2">
-						<option value="">Choose</option>
+					<select class="form-control" name="stay_type_id2">
+						<option value="">Not Apply</option>
 						@foreach($stay_types as $st)
 						<option value="{{$st->id}}">{{$st->StayTypeName}}</option>
 						@endforeach
@@ -590,18 +572,10 @@
 				</div>
 				<div class="col" id="labour_type2">
 					<label >  <span class="mm">အလုပ်သမားကဒ်အမျိုးအစား</span><span class="eng">Labour Card Type</span></label>
-					<select class="form-control" name="labour_card_type_id2" id="labour_card_type_id2">
-						<option value="">Choose</option>
+					<select class="form-control" name="labour_card_type_id2">
+						<option value="">Not Apply</option>
 						@foreach($labour_card_types as $lct)
 						<option value="{{$lct->id}}">{{$lct->LabourCardTypeName}}</option>
-						@endforeach
-					</select>
-				</div>
-				<div class="col" id="labourduration2" style="display: none;">
-					<label ><span class="mm">နေထိုင်ရန်ကြာချိန်</span><span class="eng">Labour Stay Duration</span></label>
-					<select class="form-control" name="labour_card_duration2" id="labour_card_duration2">
-						@foreach($labour_card_duration as $lcd)
-						<option value="{{$lcd->id}}">{{$lcd->LabourCardDuration}}</option>
 						@endforeach
 					</select>
 				</div>
@@ -672,12 +646,12 @@
 				<table class="table table-bordered" id="ApplicantTable2">
 					<tr>
 						<th>File</th>
-						<th>Description<span class="text-danger d-none" id="desmsg2"> * </span></th>
+						<th>Description</th>
 						<th>Action</th>
 					</tr>
 					<tr>
-						<td><input type="file" onchange="validateFileSize(this);" accept=".pdf" name="FilePath2[]" placeholder="Enter your Name" class="form-control" id="file2" /></td>
-						<td><input type="text" name="Description2[]" placeholder="Enter attachment description" class="form-control"  id="des2"/></td>
+						<td><input type="file" onchange="validateFileSize(this);" accept=".pdf" name="FilePath2[]" placeholder="Enter your Name" class="form-control" /></td>
+						<td><input type="text" name="Description2[]" placeholder="Enter attachment description" class="form-control" /></td>
 						<td><button type="button" name="add_applicant_attach2" id="add_applicant_attach2" class="btn btn-success">Add More</button></td>
 					</tr>
 				</table>
@@ -693,14 +667,14 @@
 				<div class="col-6">
 					<fieldset class="form-group">
 						<label ><span class="mm">နာမည်</span><span class="eng">Name</span></label>
-						<input type="text" class="form-control" name="PersonName3" id="PersonName3">
+						<input type="text" class="form-control" name="PersonName3">
 					</fieldset>
 				</div>
 
 				<div class="col">
 					<fieldset class="form-group">
 						<span class="mm">နိုင်ငံသား</span><span class="eng">Nationality</span>
-						<select class="form-control" name="nationality_id3" id="nationality_id3">
+						<select class="form-control" name="nationality_id3">
 							<option value="">Choose</option>
 							@foreach($nationalities as $n)
 							<option value="{{$n->id}}">{{$n->NationalityName}}</option>
@@ -714,13 +688,13 @@
 				<div class="col">
 					<fieldset class="form-group">
 						<label for="pxq13"><span class="mm">ပက်စ်ပို့နံပါတ်</span><span class="eng">Passport No</span></label>
-						<input type="text" class="form-control PassportNo3" name="PassportNo3" id="pxq13">
+						<input type="text" class="form-control" name="PassportNo3" id="pxq13">
 					</fieldset>
 				</div>
 				<div class="col">
 					<fieldset class="form-group">
 						<label for="pxq14"><span class="mm">MIC မှအတည်ပြုသည့်ရက်စွဲ</span><span class="eng">MIC Approve Date</span></label>
-						<input type="date" class="form-control StayAllowDate3" name="StayAllowDate3" id="pxq14">
+						<input type="date" class="form-control" name="StayAllowDate3" id="pxq14">
 					</fieldset>
 				</div>
 				<div class="col">
@@ -728,7 +702,7 @@
 						<!-- <label for="pxq15"><span class="mm">နေထိုင်ခွင့် သက်တမ်းကုန်ဆုံးမည့်နေ့</span><span class="eng">Stay Expire Date</span></label>
 						<input type="date" class="form-control" name="StayExpireDate3" id="pxq15"> -->
 						<label for="pxq15"><span class="mm">နေထိုင်ခွင့် သက်တမ်းကုန်ဆုံးမည့်နေ့</span><span class="eng">Stay Expire Date</span><span id="TwoMonthWarning3" style="color:red;visibility: hidden;"><small><span class="mm">နှစ်လမတိုင်ခင်ထက်မစောစေရ</span><span class="eng">No More Than Two Months Ahead</span></small></span></label>
-						<input type="date" class="form-control StayExpireDate3" name="StayExpireDate3" id="pxq15" onchange="checkTwoMonth(this.value,'TwoMonthWarning3')">
+						<input type="date" class="form-control" name="StayExpireDate3" id="pxq15" onchange="checkTwoMonth(this.value,'TwoMonthWarning3')">
 					</fieldset>
 				</div>
 
@@ -772,8 +746,8 @@
 			<div class="row mt-5">
 				<div class="col">
 					<label >Visa Type<span class="mm">Visa အမျိုးအစား</span><span class="eng">Visa Type</span></label>
-					<select class="form-control" name="visa_type_id3" id="visa_type_id3">
-						<option value="">Choose</option>
+					<select class="form-control" name="visa_type_id3">
+						<option value="">Not Apply</option>
 						@foreach($visa_types as $vt)
 						<option value="{{$vt->id}}">{{$vt->VisaTypeName}}</option>
 						@endforeach
@@ -781,8 +755,8 @@
 				</div>
 				<div class="col">
 					<label ><span class="mm">နေထိုင်ရန်ကြာချိန်</span><span class="eng">Stay Duration</span></label>
-					<select class="form-control" name="stay_type_id3" id="stay_type_id3">
-						<option value="">Choose</option>
+					<select class="form-control" name="stay_type_id3">
+						<option value="">Not Apply</option>
 						@foreach($stay_types as $st)
 						<option value="{{$st->id}}">{{$st->StayTypeName}}</option>
 						@endforeach
@@ -790,18 +764,10 @@
 				</div>
 				<div class="col" id="labour_type3">
 					<label >  <span class="mm">အလုပ်သမားကဒ်အမျိုးအစား</span><span class="eng">Labour Card Type</span></label>
-					<select class="form-control" name="labour_card_type_id3" id="labour_card_type_id3">
-						<option value="">Choose</option>
+					<select class="form-control" name="labour_card_type_id3">
+						<option value="">Not Apply</option>
 						@foreach($labour_card_types as $lct)
 						<option value="{{$lct->id}}">{{$lct->LabourCardTypeName}}</option>
-						@endforeach
-					</select>
-				</div>
-				<div class="col" id="labourduration3" style="display: none;">
-					<label ><span class="mm">နေထိုင်ရန်ကြာချိန်</span><span class="eng">Labour Stay Duration</span></label>
-					<select class="form-control" name="labour_card_duration3" id="labour_card_duration3">
-						@foreach($labour_card_duration as $lcd)
-						<option value="{{$lcd->id}}">{{$lcd->LabourCardDuration}}</option>
 						@endforeach
 					</select>
 				</div>
@@ -872,12 +838,12 @@
 				<table class="table table-bordered" id="ApplicantTable3">
 					<tr>
 						<th>File</th>
-						<th>Description<span class="text-danger d-none" id="desmsg3"> * </span></th>
+						<th>Description</th>
 						<th>Action</th>
 					</tr>
 					<tr>
-						<td><input type="file" onchange="validateFileSize(this);" accept=".pdf" name="FilePath3[]" placeholder="Enter your Name" class="form-control" id="file3" /></td>
-						<td><input type="text" name="Description3[]" placeholder="Enter attachment description" class="form-control" id="des3"/></td>
+						<td><input type="file" onchange="validateFileSize(this);" accept=".pdf" name="FilePath3[]" placeholder="Enter your Name" class="form-control" /></td>
+						<td><input type="text" name="Description3[]" placeholder="Enter attachment description" class="form-control" /></td>
 						<td><button type="button" name="add_applicant_attach3" id="add_applicant_attach3" class="btn btn-success">Add More</button></td>
 					</tr>
 				</table>
@@ -893,14 +859,14 @@
 				<div class="col-6">
 					<fieldset class="form-group">
 						<label ><span class="mm">နာမည်</span><span class="eng">Name</span></label>
-						<input type="text" class="form-control" name="PersonName4" id="PersonName4">
+						<input type="text" class="form-control" name="PersonName4">
 					</fieldset>
 				</div>
 
 				<div class="col">
 					<fieldset class="form-group">
 						<span class="mm">နိုင်ငံသား</span><span class="eng">Nationality</span>
-						<select class="form-control" name="nationality_id4" id="nationality_id4">
+						<select class="form-control" name="nationality_id4">
 							<option value="">Choose</option>
 							@foreach($nationalities as $n)
 							<option value="{{$n->id}}">{{$n->NationalityName}}</option>
@@ -914,13 +880,13 @@
 				<div class="col">
 					<fieldset class="form-group">
 						<label for="pxq13"><span class="mm">ပက်စ်ပို့နံပါတ်</span><span class="eng">Passport No</span></label>
-						<input type="text" class="form-control PassportNo4" name="PassportNo4" id="pxq13">
+						<input type="text" class="form-control" name="PassportNo4" id="pxq13">
 					</fieldset>
 				</div>
 				<div class="col">
 					<fieldset class="form-group">
 						<label for="pxq14"><span class="mm">MIC မှအတည်ပြုသည့်ရက်စွဲ</span><span class="eng">MIC Approve Date</span></label>
-						<input type="date" class="form-control StayAllowDate4" name="StayAllowDate4" id="pxq14">
+						<input type="date" class="form-control" name="StayAllowDate4" id="pxq14">
 					</fieldset>
 				</div>
 				<div class="col">
@@ -928,7 +894,7 @@
 						<!-- <label for="pxq15"><span class="mm">နေထိုင်ခွင့် သက်တမ်းကုန်ဆုံးမည့်နေ့</span><span class="eng">Stay Expire Date</span></label>
 						<input type="date" class="form-control" name="StayExpireDate4" id="pxq15"> -->
 						<label for="pxq15"><span class="mm">နေထိုင်ခွင့် သက်တမ်းကုန်ဆုံးမည့်နေ့</span><span class="eng">Stay Expire Date</span><span id="TwoMonthWarning4" style="color:red;visibility: hidden;"><small><span class="mm">နှစ်လမတိုင်ခင်ထက်မစောစေရ</span><span class="eng">No More Than Two Months Ahead</span></small></span></label>
-						<input type="date" class="form-control StayExpireDate4" name="StayExpireDate4" id="pxq15" onchange="checkTwoMonth(this.value,'TwoMonthWarning4')">
+						<input type="date" class="form-control" name="StayExpireDate4" id="pxq15" onchange="checkTwoMonth(this.value,'TwoMonthWarning4')">
 					</fieldset>
 				</div>
 
@@ -972,8 +938,8 @@
 			<div class="row mt-5">
 				<div class="col">
 					<label >Visa Type<span class="mm">Visa အမျိုးအစား</span><span class="eng">Visa Type</span></label>
-					<select class="form-control" name="visa_type_id4" id="visa_type_id4">
-						<option value="">Choose</option>
+					<select class="form-control" name="visa_type_id4">
+						<option value="">Not Apply</option>
 						@foreach($visa_types as $vt)
 						<option value="{{$vt->id}}">{{$vt->VisaTypeName}}</option>
 						@endforeach
@@ -981,8 +947,8 @@
 				</div>
 				<div class="col">
 					<label ><span class="mm">နေထိုင်ရန်ကြာချိန်</span><span class="eng">Stay Duration</span></label>
-					<select class="form-control" name="stay_type_id4" id="stay_type_id4">
-						<option value="">Choose</option>
+					<select class="form-control" name="stay_type_id4">
+						<option value="">Not Apply</option>
 						@foreach($stay_types as $st)
 						<option value="{{$st->id}}">{{$st->StayTypeName}}</option>
 						@endforeach
@@ -990,18 +956,10 @@
 				</div>
 				<div class="col" id="labour_type4">
 					<label >  <span class="mm">အလုပ်သမားကဒ်အမျိုးအစား</span><span class="eng">Labour Card Type</span></label>
-					<select class="form-control" name="labour_card_type_id4" id="labour_card_type_id4">
-						<option value="">Choose</option>
+					<select class="form-control" name="labour_card_type_id4">
+						<option value="">Not Apply</option>
 						@foreach($labour_card_types as $lct)
 						<option value="{{$lct->id}}">{{$lct->LabourCardTypeName}}</option>
-						@endforeach
-					</select>
-				</div>
-				<div class="col" id="labourduration4" style="display: none;">
-					<label ><span class="mm">နေထိုင်ရန်ကြာချိန်</span><span class="eng">Labour Stay Duration</span></label>
-					<select class="form-control" name="labour_card_duration4" id="labour_card_duration4">
-						@foreach($labour_card_duration as $lcd)
-						<option value="{{$lcd->id}}">{{$lcd->LabourCardDuration}}</option>
 						@endforeach
 					</select>
 				</div>
@@ -1072,12 +1030,12 @@
 				<table class="table table-bordered" id="ApplicantTable4">
 					<tr>
 						<th>File</th>
-						<th>Description<span class="text-danger d-none" id="desmsg4"> * </span></th>
+						<th>Description</th>
 						<th>Action</th>
 					</tr>
 					<tr>
-						<td><input type="file" onchange="validateFileSize(this);" accept=".pdf" name="FilePath4[]" placeholder="Enter your Name" class="form-control" id="file4" /></td>
-						<td><input type="text" name="Description4[]" placeholder="Enter attachment description" class="form-control" id="des4" /></td>
+						<td><input type="file" onchange="validateFileSize(this);" accept=".pdf" name="FilePath4[]" placeholder="Enter your Name" class="form-control" /></td>
+						<td><input type="text" name="Description4[]" placeholder="Enter attachment description" class="form-control" /></td>
 						<td><button type="button" name="add_applicant_attach4" id="add_applicant_attach4" class="btn btn-success">Add More</button></td>
 					</tr>
 				</table>
@@ -1093,14 +1051,14 @@
 				<div class="col-6">
 					<fieldset class="form-group">
 						<label ><span class="mm">နာမည်</span><span class="eng">Name</span></label>
-						<input type="text" class="form-control" name="PersonName5" id="PersonName5">
+						<input type="text" class="form-control" name="PersonName5">
 					</fieldset>
 				</div>
 
 				<div class="col">
 					<fieldset class="form-group">
 						<span class="mm">နိုင်ငံသား</span><span class="eng">Nationality</span>
-						<select class="form-control" name="nationality_id5" id="nationality_id5">
+						<select class="form-control" name="nationality_id5">
 							<option value="">Choose</option>
 							@foreach($nationalities as $n)
 							<option value="{{$n->id}}">{{$n->NationalityName}}</option>
@@ -1114,13 +1072,13 @@
 				<div class="col">
 					<fieldset class="form-group">
 						<label for="pxq13"><span class="mm">ပက်စ်ပို့နံပါတ်</span><span class="eng">Passport No</span></label>
-						<input type="text" class="form-control PassportNo5" name="PassportNo5" id="pxq13">
+						<input type="text" class="form-control" name="PassportNo5" id="pxq13">
 					</fieldset>
 				</div>
 				<div class="col">
 					<fieldset class="form-group">
 						<label for="pxq14"><span class="mm">MIC မှအတည်ပြုသည့်ရက်စွဲ</span><span class="eng">MIC Approve Date</span></label>
-						<input type="date" class="form-control StayAllowDate5" name="StayAllowDate5" id="pxq14">
+						<input type="date" class="form-control" name="StayAllowDate5" id="pxq14">
 					</fieldset>
 				</div>
 				<div class="col">
@@ -1128,7 +1086,7 @@
 						<!-- <label for="pxq15"><span class="mm">နေထိုင်ခွင့် သက်တမ်းကုန်ဆုံးမည့်နေ့</span><span class="eng">Stay Expire Date</span></label>
 						<input type="date" class="form-control" name="StayExpireDate5" id="pxq15"> -->
 						<label for="pxq15"><span class="mm">နေထိုင်ခွင့် သက်တမ်းကုန်ဆုံးမည့်နေ့</span><span class="eng">Stay Expire Date</span><span id="TwoMonthWarning5" style="color:red;visibility: hidden;"><small><span class="mm">နှစ်လမတိုင်ခင်ထက်မစောစေရ</span><span class="eng">No More Than Two Months Ahead</span></small></span></label>
-						<input type="date" class="form-control StayExpireDate5" name="StayExpireDate5" id="pxq15" onchange="checkTwoMonth(this.value,'TwoMonthWarning5')">
+						<input type="date" class="form-control" name="StayExpireDate5" id="pxq15" onchange="checkTwoMonth(this.value,'TwoMonthWarning5')">
 					</fieldset>
 				</div>
 
@@ -1172,8 +1130,8 @@
 			<div class="row mt-5">
 				<div class="col">
 					<label >Visa Type<span class="mm">Visa အမျိုးအစား</span><span class="eng">Visa Type</span></label>
-					<select class="form-control" name="visa_type_id5" id="visa_type_id5">
-						<option value="">Choose</option>
+					<select class="form-control" name="visa_type_id5">
+						<option value="">Not Apply</option>
 						@foreach($visa_types as $vt)
 						<option value="{{$vt->id}}">{{$vt->VisaTypeName}}</option>
 						@endforeach
@@ -1181,8 +1139,8 @@
 				</div>
 				<div class="col">
 					<label ><span class="mm">နေထိုင်ရန်ကြာချိန်</span><span class="eng">Stay Duration</span></label>
-					<select class="form-control" name="stay_type_id5" id="stay_type_id5">
-						<option value="">Choose</option>
+					<select class="form-control" name="stay_type_id5">
+						<option value="">Not Apply</option>
 						@foreach($stay_types as $st)
 						<option value="{{$st->id}}">{{$st->StayTypeName}}</option>
 						@endforeach
@@ -1190,18 +1148,10 @@
 				</div>
 				<div class="col" id="labour_type5">
 					<label >  <span class="mm">အလုပ်သမားကဒ်အမျိုးအစား</span><span class="eng">Labour Card Type</span></label>
-					<select class="form-control" name="labour_card_type_id5" id="labour_card_type_id5">
-						<option value="">Choose</option>
+					<select class="form-control" name="labour_card_type_id5">
+						<option value="">Not Apply</option>
 						@foreach($labour_card_types as $lct)
 						<option value="{{$lct->id}}">{{$lct->LabourCardTypeName}}</option>
-						@endforeach
-					</select>
-				</div>
-				<div class="col" id="labourduration5" style="display: none;">
-					<label ><span class="mm">နေထိုင်ရန်ကြာချိန်</span><span class="eng">Labour Stay Duration</span></label>
-					<select class="form-control" name="labour_card_duration5" id="labour_card_duration5">
-						@foreach($labour_card_duration as $lcd)
-						<option value="{{$lcd->id}}">{{$lcd->LabourCardDuration}}</option>
 						@endforeach
 					</select>
 				</div>
@@ -1272,12 +1222,12 @@
 				<table class="table table-bordered" id="ApplicantTable5">
 					<tr>
 						<th>File</th>
-						<th>Description<span class="text-danger d-none" id="desmsg5"> * </span></th>
+						<th>Description</th>
 						<th>Action</th>
 					</tr>
 					<tr>
-						<td><input type="file" onchange="validateFileSize(this);" accept=".pdf" name="FilePath5[]" placeholder="Enter your Name" class="form-control" id="file5" /></td>
-						<td><input type="text" name="Description5[]" placeholder="Enter attachment description" class="form-control" id="des5" /></td>
+						<td><input type="file" onchange="validateFileSize(this);" accept=".pdf" name="FilePath5[]" placeholder="Enter your Name" class="form-control" /></td>
+						<td><input type="text" name="Description5[]" placeholder="Enter attachment description" class="form-control" /></td>
 						<td><button type="button" name="add_applicant_attach5" id="add_applicant_attach5" class="btn btn-success">Add More</button></td>
 					</tr>
 				</table>
@@ -1293,14 +1243,14 @@
 				<div class="col-6">
 					<fieldset class="form-group">
 						<label ><span class="mm">နာမည်</span><span class="eng">Name</span></label>
-						<input type="text" class="form-control" name="PersonName6" id="PersonName6">
+						<input type="text" class="form-control" name="PersonName6">
 					</fieldset>
 				</div>
 
 				<div class="col">
 					<fieldset class="form-group">
 						<span class="mm">နိုင်ငံသား</span><span class="eng">Nationality</span>
-						<select class="form-control" name="nationality_id6" id="nationality_id6">
+						<select class="form-control" name="nationality_id6">
 							<option value="">Choose</option>
 							@foreach($nationalities as $n)
 							<option value="{{$n->id}}">{{$n->NationalityName}}</option>
@@ -1314,13 +1264,13 @@
 				<div class="col">
 					<fieldset class="form-group">
 						<label for="pxq13"><span class="mm">ပက်စ်ပို့နံပါတ်</span><span class="eng">Passport No</span></label>
-						<input type="text" class="form-control PassportNo6" name="PassportNo6" id="pxq13">
+						<input type="text" class="form-control" name="PassportNo6" id="pxq13">
 					</fieldset>
 				</div>
 				<div class="col">
 					<fieldset class="form-group">
 						<label for="pxq14"><span class="mm">MIC မှအတည်ပြုသည့်ရက်စွဲ</span><span class="eng">MIC Approve Date</span></label>
-						<input type="date" class="form-control StayAllowDate6" name="StayAllowDate6" id="pxq14">
+						<input type="date" class="form-control" name="StayAllowDate6" id="pxq14">
 					</fieldset>
 				</div>
 				<div class="col">
@@ -1328,7 +1278,7 @@
 						<!-- <label for="pxq15"><span class="mm">နေထိုင်ခွင့် သက်တမ်းကုန်ဆုံးမည့်နေ့</span><span class="eng">Stay Expire Date</span></label>
 						<input type="date" class="form-control" name="StayExpireDate6" id="pxq15"> -->
 						<label for="pxq15"><span class="mm">နေထိုင်ခွင့် သက်တမ်းကုန်ဆုံးမည့်နေ့</span><span class="eng">Stay Expire Date</span><span id="TwoMonthWarning6" style="color:red;visibility: hidden;"><small><span class="mm">နှစ်လမတိုင်ခင်ထက်မစောစေရ</span><span class="eng">No More Than Two Months Ahead</span></small></span></label>
-						<input type="date" class="form-control StayExpireDate6" name="StayExpireDate6" id="pxq15" onchange="checkTwoMonth(this.value,'TwoMonthWarning6')">
+						<input type="date" class="form-control" name="StayExpireDate6" id="pxq15" onchange="checkTwoMonth(this.value,'TwoMonthWarning6')">
 					</fieldset>
 				</div>
 
@@ -1372,8 +1322,8 @@
 			<div class="row mt-5">
 				<div class="col">
 					<label >Visa Type<span class="mm">Visa အမျိုးအစား</span><span class="eng">Visa Type</span></label>
-					<select class="form-control" name="visa_type_id6" id="visa_type_id6">
-						<option value="">Choose</option>
+					<select class="form-control" name="visa_type_id6">
+						<option value="">Not Apply</option>
 						@foreach($visa_types as $vt)
 						<option value="{{$vt->id}}">{{$vt->VisaTypeName}}</option>
 						@endforeach
@@ -1381,8 +1331,8 @@
 				</div>
 				<div class="col">
 					<label ><span class="mm">နေထိုင်ရန်ကြာချိန်</span><span class="eng">Stay Duration</span></label>
-					<select class="form-control" name="stay_type_id6" id="stay_type_id6">
-						<option value="">Choose</option>
+					<select class="form-control" name="stay_type_id6">
+						<option value="">Not Apply</option>
 						@foreach($stay_types as $st)
 						<option value="{{$st->id}}">{{$st->StayTypeName}}</option>
 						@endforeach
@@ -1390,18 +1340,10 @@
 				</div>
 				<div class="col" id="labour_type6">
 					<label >  <span class="mm">အလုပ်သမားကဒ်အမျိုးအစား</span><span class="eng">Labour Card Type</span></label>
-					<select class="form-control" name="labour_card_type_id6" id="labour_card_type_id6">
-						<option value="">Choose</option>
+					<select class="form-control" name="labour_card_type_id6">
+						<option value="">Not Apply</option>
 						@foreach($labour_card_types as $lct)
 						<option value="{{$lct->id}}">{{$lct->LabourCardTypeName}}</option>
-						@endforeach
-					</select>
-				</div>
-				<div class="col" id="labourduration6" style="display: none;">
-					<label ><span class="mm">နေထိုင်ရန်ကြာချိန်</span><span class="eng">Labour Stay Duration</span></label>
-					<select class="form-control" name="labour_card_duration6" id="labour_card_duration6">
-						@foreach($labour_card_duration as $lcd)
-						<option value="{{$lcd->id}}">{{$lcd->LabourCardDuration}}</option>
 						@endforeach
 					</select>
 				</div>
@@ -1472,12 +1414,12 @@
 				<table class="table table-bordered" id="ApplicantTable6">
 					<tr>
 						<th>File</th>
-						<th>Description<span class="text-danger d-none" id="desmsg6"> * </span></th>
+						<th>Description</th>
 						<th>Action</th>
 					</tr>
 					<tr>
-						<td><input type="file" onchange="validateFileSize(this);" accept=".pdf" name="FilePath6[]" placeholder="Enter your Name" class="form-control" id="file6" /></td>
-						<td><input type="text" name="Description6[]" placeholder="Enter attachment description" class="form-control" id="des6" /></td>
+						<td><input type="file" onchange="validateFileSize(this);" accept=".pdf" name="FilePath6[]" placeholder="Enter your Name" class="form-control" /></td>
+						<td><input type="text" name="Description6[]" placeholder="Enter attachment description" class="form-control" /></td>
 						<td><button type="button" name="add_applicant_attach6" id="add_applicant_attach6" class="btn btn-success">Add More</button></td>
 					</tr>
 				</table>
@@ -1493,14 +1435,14 @@
 				<div class="col-6">
 					<fieldset class="form-group">
 						<label ><span class="mm">နာမည်</span><span class="eng">Name</span></label>
-						<input type="text" class="form-control" name="PersonName7" id="PersonName7">
+						<input type="text" class="form-control" name="PersonName7">
 					</fieldset>
 				</div>
 
 				<div class="col">
 					<fieldset class="form-group">
 						<span class="mm">နိုင်ငံသား</span><span class="eng">Nationality</span>
-						<select class="form-control" name="nationality_id7" id="nationality_id7">
+						<select class="form-control" name="nationality_id7">
 							<option value="">Choose</option>
 							@foreach($nationalities as $n)
 							<option value="{{$n->id}}">{{$n->NationalityName}}</option>
@@ -1514,13 +1456,13 @@
 				<div class="col">
 					<fieldset class="form-group">
 						<label for="pxq13"><span class="mm">ပက်စ်ပို့နံပါတ်</span><span class="eng">Passport No</span></label>
-						<input type="text" class="form-control PassportNo7" name="PassportNo7" id="pxq13">
+						<input type="text" class="form-control" name="PassportNo7" id="pxq13">
 					</fieldset>
 				</div>
 				<div class="col">
 					<fieldset class="form-group">
 						<label for="pxq14"><span class="mm">MIC မှအတည်ပြုသည့်ရက်စွဲ</span><span class="eng">MIC Approve Date</span></label>
-						<input type="date" class="form-control StayAllowDate7" name="StayAllowDate7" id="pxq14">
+						<input type="date" class="form-control" name="StayAllowDate7" id="pxq14">
 					</fieldset>
 				</div>
 				<div class="col">
@@ -1528,7 +1470,7 @@
 						<!-- <label for="pxq15"><span class="mm">နေထိုင်ခွင့် သက်တမ်းကုန်ဆုံးမည့်နေ့</span><span class="eng">Stay Expire Date</span></label>
 						<input type="date" class="form-control" name="StayExpireDate7" id="pxq15"> -->
 						<label for="pxq15"><span class="mm">နေထိုင်ခွင့် သက်တမ်းကုန်ဆုံးမည့်နေ့</span><span class="eng">Stay Expire Date</span><span id="TwoMonthWarning7" style="color:red;visibility: hidden;"><small><span class="mm">နှစ်လမတိုင်ခင်ထက်မစောစေရ</span><span class="eng">No More Than Two Months Ahead</span></small></span></label>
-						<input type="date" class="form-control StayExpireDate7" name="StayExpireDate7" id="pxq15" onchange="checkTwoMonth(this.value,'TwoMonthWarning7')">
+						<input type="date" class="form-control" name="StayExpireDate7" id="pxq15" onchange="checkTwoMonth(this.value,'TwoMonthWarning7')">
 					</fieldset>
 				</div>
 
@@ -1572,8 +1514,8 @@
 			<div class="row mt-5">
 				<div class="col">
 					<label >Visa Type<span class="mm">Visa အမျိုးအစား</span><span class="eng">Visa Type</span></label>
-					<select class="form-control" name="visa_type_id7" id="visa_type_id7">
-						<option value="">Choose</option>
+					<select class="form-control" name="visa_type_id7">
+						<option value="">Not Apply</option>
 						@foreach($visa_types as $vt)
 						<option value="{{$vt->id}}">{{$vt->VisaTypeName}}</option>
 						@endforeach
@@ -1581,8 +1523,8 @@
 				</div>
 				<div class="col">
 					<label ><span class="mm">နေထိုင်ရန်ကြာချိန်</span><span class="eng">Stay Duration</span></label>
-					<select class="form-control" name="stay_type_id7" id="stay_type_id7">
-						<option value="">Choose</option>
+					<select class="form-control" name="stay_type_id7">
+						<option value="">Not Apply</option>
 						@foreach($stay_types as $st)
 						<option value="{{$st->id}}">{{$st->StayTypeName}}</option>
 						@endforeach
@@ -1590,18 +1532,10 @@
 				</div>
 				<div class="col" id="labour_type7">
 					<label >  <span class="mm">အလုပ်သမားကဒ်အမျိုးအစား</span><span class="eng">Labour Card Type</span></label>
-					<select class="form-control" name="labour_card_type_id7" id="labour_card_type_id7">
-						<option value="">Choose</option>
+					<select class="form-control" name="labour_card_type_id7">
+						<option value="">Not Apply</option>
 						@foreach($labour_card_types as $lct)
 						<option value="{{$lct->id}}">{{$lct->LabourCardTypeName}}</option>
-						@endforeach
-					</select>
-				</div>
-				<div class="col" id="labourduration7" style="display: none;">
-					<label ><span class="mm">နေထိုင်ရန်ကြာချိန်</span><span class="eng">Labour Stay Duration</span></label>
-					<select class="form-control" name="labour_card_duration7" id="labour_card_duration7">
-						@foreach($labour_card_duration as $lcd)
-						<option value="{{$lcd->id}}">{{$lcd->LabourCardDuration}}</option>
 						@endforeach
 					</select>
 				</div>
@@ -1672,136 +1606,22 @@
 				<table class="table table-bordered" id="ApplicantTable7">
 					<tr>
 						<th>File</th>
-						<th>Description<span class="text-danger d-none" id="desmsg7"> * </span></th>
+						<th>Description</th>
 						<th>Action</th>
 					</tr>
 					<tr>
-						<td><input type="file" onchange="validateFileSize(this);" accept=".pdf" name="FilePath7[]" placeholder="Enter your Name" class="form-control" id="file7" /></td>
-						<td><input type="text" name="Description7[]" placeholder="Enter attachment description" class="form-control" id="des7" /></td>
+						<td><input type="file" onchange="validateFileSize(this);" accept=".pdf" name="FilePath7[]" placeholder="Enter your Name" class="form-control" /></td>
+						<td><input type="text" name="Description7[]" placeholder="Enter attachment description" class="form-control" /></td>
 						<td><button type="button" name="add_applicant_attach7" id="add_applicant_attach7" class="btn btn-success">Add More</button></td>
 					</tr>
 				</table>
 			</div>
 
 		</div>
-
-		<!-- Modal -->
-		<div class="modal fade" id="applicationModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true" >
-		  <div class="modal-dialog" role="document">
-		    <div class="modal-content">
-		      <div class="modal-header">
-		        <h5 class="modal-title" id="exampleModalLabel">စိစစ်တင်ပြချက်</h5>
-		        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-		          <span aria-hidden="true">&times;</span>
-		        </button>
-		      </div>
-		      
-		      <div class="modal-body">
-		        <div class="row mt-3" id="checkTitle">
-		        </div>
-
-				<table class="table table-bordered table-responsive mt-2" id="TableHeader">
-					<thead>
-						<tr>
-							<th>စဉ်</th>
-							<th>အမည်/ရာထူး</th>
-							<th>နိုင်ငံသား</th>
-							<th>နိုင်ငံကူးလက်မှတ်</th>
-							<th>စတင်ခန့်ထားသည့်ရက်စွဲ</th>
-							<th>နေထိုင်ခွင့် ကုန်ဆုံးမည့်နေ</th>
-							<th>ပြည်ဝင်ခွင့်</th>
-							<th>နေထိုင်ခွင့်</th>
-							<th>အလုပ်သမားကဒ်/သက်တမ်း</th>
-						</tr>
-					</thead>
-					<tbody id="bodyhtml">
-						
-					</tbody>
-				</table>
-				
-		      </div>
-
-		      <div class="modal-footer">
-		        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>	
-
-		        <button type="submit" class="btn btn-primary mybutton" id="btnsave" style="background-color: #4CAF50; ">Save</button>
-		      </div>
-		    </div>
-		  </div>
-		</div>
-
 	</form>
 </div>
-<?php
-	$isDisable = "0";
-?>
-@foreach($status as $s)
-	@if($s->Status != "1")
-		<?php $isDisable = "1"; ?>		
-	@endif
-@endforeach
-
 <script src="{{ asset('js/applyform.js') }}"></script>
 <script type="text/javascript">
-	
-	var btnDisable = {!! $isDisable !!};
-	console.log(btnDisable);
-	if(btnDisable == "1"){
-		$('#applySubmit').addClass('disabled');
-		$('#disableMsg').removeClass('d-none');
-	}
-
-
-	$('#labour_card_type_id1').change(function(){
-		if($(this).val() != '' ){
-			$('#labourduration1').show();
-		}else{
-			$('#labourduration1').hide();
-		}
-	})
-	$('#labour_card_type_id2').change(function(){
-		if($(this).val() != '' ){
-			$('#labourduration2').show();
-		}else{
-			$('#labourduration2').hide();
-		}
-	})
-	$('#labour_card_type_id3').change(function(){
-		if($(this).val() != '' ){
-			$('#labourduration3').show();
-		}else{
-			$('#labourduration3').hide();
-		}
-	})
-	$('#labour_card_type_id4').change(function(){
-		if($(this).val() != '' ){
-			$('#labourduration4').show();
-		}else{
-			$('#labourduration4').hide();
-		}
-	})
-	$('#labour_card_type_id5').change(function(){
-		if($(this).val() != '' ){
-			$('#labourduration5').show();
-		}else{
-			$('#labourduration5').hide();
-		}
-	})
-	$('#labour_card_type_id6').change(function(){
-		if($(this).val() != '' ){
-			$('#labourduration6').show();
-		}else{
-			$('#labourduration6').hide();
-		}
-	})
-	$('#labour_card_type_id7').change(function(){
-		if($(this).val() != '' ){
-			$('#labourduration7').show();
-		}else{
-			$('#labourduration7').hide();
-		}
-	})
-
 	function checkTwoMonth(expireDate,sourceID){
 		const d = new Date();
 		var newDate = new Date(d.setMonth(d.getMonth()+2)).toISOString().split('T')[0];

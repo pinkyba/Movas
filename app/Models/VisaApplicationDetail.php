@@ -9,7 +9,7 @@ use App\Models\PersonType;
 use App\Models\VisaType;
 use App\Models\StayType;
 use App\Models\LabourCardType;
-use App\Models\LabourCardDuration;
+use App\Models\LabourCardDuration; //htet
 use App\Models\RelationShip;
 use App\Models\VisaApplicationDetailAttachment;
 
@@ -64,6 +64,7 @@ class VisaApplicationDetail extends Model
         return $this->belongsTo(LabourCardType::class);
     }
 
+    // htet
     public function labour_card_duration()
     {
         return $this->belongsTo(LabourCardDuration::class);

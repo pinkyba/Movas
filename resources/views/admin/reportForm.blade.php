@@ -43,7 +43,7 @@
 
 
     <div class="d-xl-flex justify-content-between align-items-start" style="border-bottom: 1px solid lightblue;">
-        <!-- <p class="text-dark mb-2"> ဗီဇာသက်တမ်းတိုးမြှင့်ခွင့် လျှောက်ထားသောနိုင်ငံခြားသားများစာရင်း </p> -->
+        <!-- <p class="text-dark mb-2"> ?????????????????????????? ????????????????????????????????????? </p> -->
         <p class="text-dark mb-2">Approved Foreign Technician/Skilled Labour List</p>
     </div>
 
@@ -52,14 +52,14 @@
         <form action="#" method="Get">
             <div class="row"> 
                 <div class="col-md-2 col-sm-12">
-                    <label class="mt-2 mr-1" style="font-size: 14px; text-decoration:underline;">Applicant</b></label>
+                    <label class="mt-2 mr-1" style="font-size: 14px;">Applicant</b></label>
                     <input type="text" id="search" class="form-control" placeholder="Applicant Name"
                         name="PersonNameSearch" value={{ $r_PersonNameSearch }}>
                 </div>
 
 
                 <div class="col-md-2 col-sm-12">
-                    <label class="mt-2 mx-1" style="font-size: 14px; text-decoration:underline;">Nationality</label>
+                    <label class="mt-2 mx-1" style="font-size: 14px;">Nationality</label>
                     <select id="search" name="NationalitySearch" class="form-control">
                         <option value="">Choose</option>
                         @foreach ($nationality as $na)
@@ -72,7 +72,7 @@
                 </div>
 
                 <div class="col-md-5 col-sm-12">
-                    <label class="mt-2 mx-1" style="font-size: 14px; text-decoration:underline;">Date</label>
+                    <label class="mt-2 mx-1" style="font-size: 14px;">Date</label>
                     <div class="input-group input-daterange">
                         {{-- <label class="mt-2 mx-1" style="font-size: 14px;">From</label> --}}
                         <input type="date" name="from_date" class="form-control" autocomplete="off"
@@ -85,7 +85,7 @@
                 </div>
                 {{-- ----------------------------------------------------------------------- --}}
                 <div class="col-md-2 col-sm-12">
-                    <label class="mt-2 mx-1 ml-1" style="font-size: 14px; text-decoration:underline;">Gender</label>
+                    <label class="mt-2 mx-1 ml-1" style="font-size: 14px;">Gender</label>
                     <select id="search" name="GenderSearch" class="form-control">
                         <option value="">Choose</option>
                         <option value="Male" {{ $r_GenderSearch == 'Male' ? 'selected' : '' }}>Male</option>
@@ -93,10 +93,10 @@
                     </select>
                 </div>
                 {{-- ------------------------------------------------------------------------------------- --}}
-                {{-- --------------------------------- Person Type Search -------------------------------- --}}
-                {{-- ----------------------------------------------------------------------------------- --}}
+                {{-- --------------------------------- Applicant Type Search ----------------------------- --}}
+                {{-- ------------------------------------------------------------------------------------- --}}
                 <div class="col-md-2 col-sm-12">
-                    <label class="mt-2 mx-1 ml-1" style="font-size: 14px; text-decoration:underline;">Person Type</label>
+                    <label class="mt-2 mx-1 ml-1" style="font-size: 14px;">Applicant Type</label>
                     <select id="search" name="PersonTypeSearch" class="form-control">
                         <option value="">Choose</option>
                         @foreach ($persontype as $pe)
@@ -110,7 +110,7 @@
                 {{-- --------------------------------- Sector Search -------------------------------- --}}
                 {{-- ----------------------------------------------------------------------------------- --}}
                 <div class="col-md-2 col-sm-12">
-                    <label class="mt-2 mx-1 ml-1" style="font-size: 14px; text-decoration:underline;">Sector</label>
+                    <label class="mt-2 mx-1 ml-1" style="font-size: 14px;">Sector</label>
                     <select id="search" name="SectorSearch" class="form-control">
                         <option value="">Choose</option>
                         @foreach ($sector as $se)
@@ -125,19 +125,19 @@
                 {{-- ------------------------------------------- --}}
 
                 <div class="col-md-2 col-sm-12">
-                    <label class="mt-2 mr-1" style="font-size: 14px; text-decoration:underline;">Company Name</label>
+                    <label class="mt-2 mr-1" style="font-size: 14px;">Company Name</label>
                     <input type="text" id="search" class="form-control" placeholder="Company Name"
                         name="CompanyNameSearch" value={{ $r_CompanyNameSearch }}>
                 </div>
                 {{-- ------------------------------------------------------------------------ --}}
                 <div class="col-md-2 col-sm-12">
-                    <label class="mt-2 mr-1" style="font-size: 14px; text-decoration:underline;">Permit No</label>
+                    <label class="mt-2 mr-1" style="font-size: 14px;">Permit No</label>
                     <input type="text" id="search" class="form-control" placeholder="Permit No"
                         name="PermitNoSearch" value={{ $r_PermitNoSearch }}>
                 </div>
                 {{-- ------------------------------------------------------------------------ --}}
                 <div class="col-md-2 col-sm-12">
-                    <label class="mt-2 mr-1" style="font-size: 14px; text-decoration:underline;">Address</label>
+                    <label class="mt-2 mr-1" style="font-size: 14px;">Address</label>
                     <input type="text" id="search" class="form-control" placeholder="Address"
                         name="AddressSearch" value={{ $r_AddressSearch }}>
                 </div>
@@ -194,22 +194,22 @@
             <table class="table table-striped table-bordered table-responsive" style="border: 1px solid lightblue;">
                 <thead>
                     <tr>
-                        <!-- <th rowspan="2" align="center" style="line-height: 4;">စဉ်</th>
-                                        <th rowspan="2" style="line-height: 4;">အမည်</th>
-                                        <th rowspan="2" style="line-height: 4;">နိုင်ငံသား</th>
-                                        <th rowspan="2" style="line-height: 4;">လိင်</th>
-                                        <th rowspan="2" style="line-height: 4;">နိုင်ငံကူးလက်မှတ်အမှတ်</th>
+                        <!-- <th rowspan="2" align="center" style="line-height: 4;">???</th>
+                                        <th rowspan="2" style="line-height: 4;">????</th>
+                                        <th rowspan="2" style="line-height: 4;">??????????</th>
+                                        <th rowspan="2" style="line-height: 4;">????</th>
+                                        <th rowspan="2" style="line-height: 4;">??????????????????????</th>
 
-                                        <th rowspan="2" style="line-height: 4;">သက်တမ်းကုန်ဆုံးသည့်နေ့</th>
-                                        <th rowspan="2" style="line-height: 4;">ဗီဇာအမျိုးအစား</th>
-                                        <th rowspan="2" style="line-height: 4;">နေထိုင်ခွင့်(ကာလ)</th>
-                                        <th rowspan="2" style="line-height: 4;">နေထိုင်ခွင့်(မှ)</th>
-                                        <th rowspan="2" style="line-height: 4;">နေထိုင်ခွင့်(သို့)</th>
-                                        <th rowspan="2" style="line-height: 2;">လက်ရှိအလုပ်အကိုင် <br> /ရာထူး</th>
-                                        <th rowspan="2" style="line-height: 4;">တော်စပ်ပုံ</th>
-                                        <th rowspan="2" style="line-height: 4;">ကုမ္ပဏီအမည်</th>
-                                        <th rowspan="2" style="line-height: 2;">ခွင့်ပြုမိန့်(သို့) <br> အတည်ပြုမိန့်အမှတ်</th>
-                                        <th colspan="3">ထောက်ခံသည့်နေ့</th> -->
+                                        <th rowspan="2" style="line-height: 4;">??????????????????????</th>
+                                        <th rowspan="2" style="line-height: 4;">??????????????</th>
+                                        <th rowspan="2" style="line-height: 4;">????????????(???)</th>
+                                        <th rowspan="2" style="line-height: 4;">????????????(??)</th>
+                                        <th rowspan="2" style="line-height: 4;">????????????(????)</th>
+                                        <th rowspan="2" style="line-height: 2;">????????????????? <br> /?????</th>
+                                        <th rowspan="2" style="line-height: 4;">??????????</th>
+                                        <th rowspan="2" style="line-height: 4;">???????????</th>
+                                        <th rowspan="2" style="line-height: 2;">?????????????(????) <br> ?????????????????</th>
+                                        <th colspan="3">??????????????</th> -->
 
                         <th rowspan="2" align="center" style="line-height: 4;">No.</th>
                         <th rowspan="2" style="line-height: 4;">Name</th>
@@ -231,9 +231,9 @@
                         <th colspan="3">Approved Date</th>
                     </tr>
                     <tr>
-                        <!-- <th>ရက်</td>
-                                        <th>လ</td>
-                                        <th>နှစ်</td> -->
+                        <!-- <th>???</td>
+                                        <th>?</td>
+                                        <th>????</td> -->
 
                         <th>D</td>
                         <th>M</td>
@@ -277,7 +277,7 @@
         <div class="Container mt-2">
             <div class="" style="margin-left: 500px;">
                 @if (isset($reports))
-                    {{ $reports->links('vendor.pagination.custom2') }}
+                    {{ $reports->links('vendor.pagination.custom') }}
                 @endif
             </div>
         </div>

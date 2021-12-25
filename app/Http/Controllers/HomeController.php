@@ -6,7 +6,9 @@ use Illuminate\Http\Request;
 use App\Models\VisaApplicationHead;
 use Auth;
 use Illuminate\Support\Facades\Validator;
+use App\Models\VisaApplicationDetail;
 use Carbon\Carbon;
+use Brian2694\Toastr\Facades\Toastr;
 
 class HomeController extends Controller
 {
@@ -78,6 +80,22 @@ class HomeController extends Controller
                         ])->orderBy('created_at', 'desc')->paginate(20);
          
             return view('home',compact('visa_heads'));
+       }
+    }
+  public function delete($id)
+    {
+        
+        try{
+         $visa = VisaApplicationHead::findOrFail($id);
+         VisaApplicationDetail::where('visa_application_head_id',$id)->delete();
+
+         $visa->delete();
+        Toastr::error('Successfully deleted visa .');
+
+        return \Redirect::route('home');
+       }catch(Exception $e)
+       {
+        return \Redirect::route('home');
        }
     }
 }

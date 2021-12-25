@@ -201,7 +201,8 @@
 								@endif
 								@if($value->Status == 2)
 									<label class="badge badge-danger">Rejected</label>
-									<td class="text-center"><a class="btn btn-sm rounded btn-primary button" href="{{ route('applyform.id',$value->id) }}">Show</a></td>
+									<td class="text-center"><a class="btn btn-sm rounded btn-primary button" href="{{ route('applyform.id',$value->id) }}">Show</a>
+									<a href="{{ route('visa.delete',$value->id) }}" class="btn btn-sm rounded btn-primary button btn-danger"  onclick="return confirm('Are you sure you want to delete?')" > Delete</a></td>
 								@endif
 							</td>
 						</tr>

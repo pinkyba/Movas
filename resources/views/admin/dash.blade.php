@@ -255,57 +255,8 @@
 
            
 
-<div id="container"></div>
-{{-- <br><br>
- <div style="border: 0.1px solid black; border-radius: 2px;">
-              <h4 class="ml-5 mt-3" style="text-decoration: underline;">Visa Application</h4>
-               <div class="card-deck">
-                  <div class="card">
-                    <div class="card-body">
-                      <h5 class="card-title">Daily</h5>
-                      <p class="card-text font-weight-bold text-primary">{{$daily_visa}}</p>
-                    </div>
-                  </div>
-                  <div class="card">
-                    <div class="card-body">
-                      <h5 class="card-title">Weekly</h5>
-                      <p class="card-text font-weight-bold text-primary">{{$weekly_visa}}</p>
-                    </div>
-                  </div>
-                  <div class="card">
-                    <div class="card-body">
-                      <h5 class="card-title">Monthly</h5>
-                      <p class="card-text font-weight-bold text-primary">{{$monthly_visa}}</p>
-                    </div>
-                  </div>
-                  <div class="card">
-                    <div class="card-body">
-                      <h5 class="card-title">Total</h5>
-                      <p class="card-text font-weight-bold text-primary">{{$total_visa}}</p>
-                    </div>
-                  </div>
-              </div>
-              <div class="card-deck">
-                  <div class="card">
-                    <div class="card-body">
-                      <h5 class="card-title">In-progress Visa Application</h5>
-                      <p class="card-text font-weight-bold text-info">{{$inprogress_visa}}</p>
-                    </div>
-                  </div>
-                  <div class="card">
-                    <div class="card-body">
-                      <h5 class="card-title">Approved Visa Application</h5>
-                      <p class="card-text font-weight-bold text-success">{{$approved_visa}}</p>
-                    </div>
-                  </div>
-                  <div class="card">
-                    <div class="card-body">
-                      <h5 class="card-title">Rejected Visa Application</h5>
-                      <p class="card-text font-weight-bold text-danger">{{$rejected_visa}}</p>
-                    </div>
-                  </div>
-              </div>
-          </div> --}}
+<!-- <div id="container"></div>
+
           <br><br>
 <script src="{{ asset('js/highchart.js') }}"></script>
 <script type="text/javascript">
@@ -357,4 +308,46 @@
 });
     
 </script>
+
+
+
+<canvas id="myChart" width="400" height="400"></canvas>
+<script src="{{ asset('js/chart.js') }}"></script>
+<script>
+const ctx = document.getElementById('myChart').getContext('2d');
+const myChart = new Chart(ctx, {
+    type: 'bar',
+    data: {
+        labels: ['Red', 'Blue', 'Yellow', 'Green', 'Purple', 'Orange'],
+        datasets: [{
+            label: '# of Votes',
+            data: [12, 19, 3, 5, 2, 3],
+            backgroundColor: [
+                'rgba(255, 99, 132, 0.2)',
+                'rgba(54, 162, 235, 0.2)',
+                'rgba(255, 206, 86, 0.2)',
+                'rgba(75, 192, 192, 0.2)',
+                'rgba(153, 102, 255, 0.2)',
+                'rgba(255, 159, 64, 0.2)'
+            ],
+            borderColor: [
+                'rgba(255, 99, 132, 1)',
+                'rgba(54, 162, 235, 1)',
+                'rgba(255, 206, 86, 1)',
+                'rgba(75, 192, 192, 1)',
+                'rgba(153, 102, 255, 1)',
+                'rgba(255, 159, 64, 1)'
+            ],
+            borderWidth: 1
+        }]
+    },
+    options: {
+        scales: {
+            y: {
+                beginAtZero: true
+            }
+        }
+    }
+});
+</script> -->
 @endsection

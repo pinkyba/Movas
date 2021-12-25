@@ -191,7 +191,7 @@
                 <a class="nav-link" href="{{ route('inprocessform') }}">
                   <span class="icon-bg"><i class="mdi mdi-cube menu-icon"></i></span>
                   {{-- <span class="menu-title mm">In-Process</span> --}}
-                  <span class="menu-title">In-Process</span>
+                  <span class="menu-title">In-Proces</span>
                 </a>
               </li>
               <li class="nav-item">
@@ -237,6 +237,7 @@
                 </a>
               </li>
 
+ 		
             @endif
             
             @if (Auth::user()->rank_id > 5)

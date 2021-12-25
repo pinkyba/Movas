@@ -55,75 +55,16 @@ class VisaApplicationController extends Controller
         // dd($total_local);
 
         $status = DB::Table('visa_application_heads')->select('Status')->where('user_id',$user_id)->get();
-        //dd($status);        
+        //dd($status);
 
-        return view('applicationform',compact('profile','visa_types','person_types','nationalities','labour_card_types','stay_types', 'labour_card_duration', 'relation_ships','total_local','total_foreign','available_local','available_foreign','status'))
+        return view('applicationform',compact('profile','visa_types','person_types','nationalities','labour_card_types','stay_types','labour_card_duration','relation_ships','total_local','total_foreign','available_local','available_foreign','status'))
             ->with('i', (request()->input('page', 1) - 1) * 5);
     }
 
     public function store(Request $request)
     {
         // dd($request->all());
-        $ValidDateErr = False;
-        if (!is_null($request->nationality_id1) && !is_null($request->PersonName1) && !is_null($request->PassportNo1)) {
-            $StayExpireDate = $request->StayExpireDate1;
-            $ValidDate = Carbon::now()->addMonth(2);
-            if ($StayExpireDate >= $ValidDate) {
-                $ValidDateErr = True;
-            }
-        }
-        if (!is_null($request->nationality_id2) && !is_null($request->PersonName2) && !is_null($request->PassportNo2)) {
-            $StayExpireDate = $request->StayExpireDate2;
-            $ValidDate = Carbon::now()->addMonth(2);
-            if ($StayExpireDate >= $ValidDate) {
-                $ValidDateErr = True;
-            }
-        }
 
-        if (!is_null($request->nationality_id3) && !is_null($request->PersonName3) && !is_null($request->PassportNo3)) {
-            $StayExpireDate = $request->StayExpireDate3;
-            $ValidDate = Carbon::now()->addMonth(2);
-            if ($StayExpireDate >= $ValidDate) {
-                $ValidDateErr = True;
-            }
-        }
-
-        if (!is_null($request->nationality_id4) && !is_null($request->PersonName4) && !is_null($request->PassportNo4)) {
-            $StayExpireDate = $request->StayExpireDate4;
-            $ValidDate = Carbon::now()->addMonth(2);
-            if ($StayExpireDate >= $ValidDate) {
-                $ValidDateErr = True;
-            }
-        }
-
-        if (!is_null($request->nationality_id5) && !is_null($request->PersonName5) && !is_null($request->PassportNo5)) {
-            $StayExpireDate = $request->StayExpireDate5;
-            $ValidDate = Carbon::now()->addMonth(2);
-            if ($StayExpireDate >= $ValidDate) {
-                $ValidDateErr = True;
-            }
-        }
-
-        if (!is_null($request->nationality_id6) && !is_null($request->PersonName6) && !is_null($request->PassportNo6)) {
-            $StayExpireDate = $request->StayExpireDate6;
-            $ValidDate = Carbon::now()->addMonth(2);
-            if ($StayExpireDate >= $ValidDate) {
-                $ValidDateErr = True;
-            }
-        }
-
-        if (!is_null($request->nationality_id7) && !is_null($request->PersonName7) && !is_null($request->PassportNo7)) {
-            $StayExpireDate = $request->StayExpireDate7;
-            $ValidDate = Carbon::now()->addMonth(2);
-            if ($StayExpireDate >= $ValidDate) {
-                $ValidDateErr = True;
-            }
-        }
-
-        if ($ValidDateErr=True) {
-            "Error";
-        }
-       
         $ApplicantNumbers = 0;
         $VisaApply = false;
         $StayApply = false;
@@ -213,8 +154,7 @@ class VisaApplicationController extends Controller
                 } elseif ($request->labour_card_type_id1==2){
                     $LabourCardApplyRenew = true;
                 }
-            }      
-
+            }
             $ApplicantNumbers += 1;
 
             // dd($VisaApplyMultiple);
@@ -776,7 +716,8 @@ class VisaApplicationController extends Controller
         elseif ($ApplicantNumbers == 7) {
             $app_numbers = '၇';
         }
-       
+
+        
 
         $des = "နိုင်ငံခြားသား ( ".$app_numbers." ) ဦး အား ".$Subject." ပြုလုပ်ခွင့်ပေးပါရန် တင်ပြလာခြင်း";
 
@@ -803,11 +744,9 @@ class VisaApplicationController extends Controller
         $person_types = PersonType::all();
         $nationalities = Nationality::all();
         $labour_card_types = LabourCardType::all();
+        $stay_types = StayType::all();
+        $stay_types = StayType::all();
         $labour_card_duration = LabourCardDuration::all();
-
-        $stay_types = StayType::all();
-        $stay_types = StayType::all();
-
         $relation_ships = RelationShip::all();
 
 
@@ -823,7 +762,7 @@ class VisaApplicationController extends Controller
         $available_foreign = $total_foreign - $visa_head->StaffForeignAppointed;
         // dd($total_local);
 
-        return view('reject_applicationform',compact('profile','visa_types','person_types','nationalities','labour_card_types', 'labour_card_duration', 'stay_types','relation_ships','total_local','total_foreign','available_local','available_foreign','count','visa_details','visa_head'));
+        return view('reject_applicationform',compact('profile','visa_types','person_types','nationalities','labour_card_types','stay_types','labour_card_duration','relation_ships','total_local','total_foreign','available_local','available_foreign','count','visa_details','visa_head'));
     }
 
     public function getData($data, $key)
@@ -896,6 +835,7 @@ class VisaApplicationController extends Controller
             $visa_detail1->update(['visa_type_id'=>request('visa_type_id1')]);
             $visa_detail1->update(['stay_type_id'=>request('stay_type_id1')]);
             $visa_detail1->update(['labour_card_type_id'=>request('labour_card_type_id1')]);
+            $visa_detail1->update(['labour_card_duration_id'=>request('labour_card_duration1')]);
             $visa_detail1->update(['relation_ship_id'=>request('relation_ship_id1')]);
             $visa_detail1->update(['Remark'=>request('Remark1')]);
 
@@ -963,6 +903,7 @@ class VisaApplicationController extends Controller
             $visa_detail2->update(['visa_type_id'=>request('visa_type_id2')]);
             $visa_detail2->update(['stay_type_id'=>request('stay_type_id2')]);
             $visa_detail2->update(['labour_card_type_id'=>request('labour_card_type_id2')]);
+            $visa_detail2->update(['labour_card_duration_id'=>request('labour_card_duration2')]);
             $visa_detail2->update(['relation_ship_id'=>request('relation_ship_id2')]);
             $visa_detail2->update(['Remark'=>request('Remark2')]);
 
@@ -1031,6 +972,7 @@ class VisaApplicationController extends Controller
             $visa_detail3->update(['visa_type_id'=>request('visa_type_id3')]);
             $visa_detail3->update(['stay_type_id'=>request('stay_type_id3')]);
             $visa_detail3->update(['labour_card_type_id'=>request('labour_card_type_id3')]);
+            $visa_detail3->update(['labour_card_duration_id'=>request('labour_card_duration3')]);
             $visa_detail3->update(['relation_ship_id'=>request('relation_ship_id3')]);
             $visa_detail3->update(['Remark'=>request('Remark3')]);
 
@@ -1098,6 +1040,7 @@ class VisaApplicationController extends Controller
             $visa_detail4->update(['visa_type_id'=>request('visa_type_id4')]);
             $visa_detail4->update(['stay_type_id'=>request('stay_type_id4')]);
             $visa_detail4->update(['labour_card_type_id'=>request('labour_card_type_id4')]);
+            $visa_detail4->update(['labour_card_duration_id'=>request('labour_card_duration4')]);
             $visa_detail4->update(['relation_ship_id'=>request('relation_ship_id4')]);
             $visa_detail4->update(['Remark'=>request('Remark4')]);
 
@@ -1164,6 +1107,7 @@ class VisaApplicationController extends Controller
             $visa_detail5->update(['visa_type_id'=>request('visa_type_id5')]);
             $visa_detail5->update(['stay_type_id'=>request('stay_type_id5')]);
             $visa_detail5->update(['labour_card_type_id'=>request('labour_card_type_id5')]);
+            $visa_detail5->update(['labour_card_duration_id'=>request('labour_card_duration5')]);
             $visa_detail5->update(['relation_ship_id'=>request('relation_ship_id5')]);
             $visa_detail5->update(['Remark'=>request('Remark5')]);
 
@@ -1230,6 +1174,7 @@ class VisaApplicationController extends Controller
             $visa_detail6->update(['visa_type_id'=>request('visa_type_id6')]);
             $visa_detail6->update(['stay_type_id'=>request('stay_type_id6')]);
             $visa_detail6->update(['labour_card_type_id'=>request('labour_card_type_id6')]);
+            $visa_detail6->update(['labour_card_duration_id'=>request('labour_card_duration6')]);
             $visa_detail6->update(['relation_ship_id'=>request('relation_ship_id6')]);
             $visa_detail6->update(['Remark'=>request('Remark6')]);
 
@@ -1296,6 +1241,7 @@ class VisaApplicationController extends Controller
             $visa_detail7->update(['visa_type_id'=>request('visa_type_id7')]);
             $visa_detail7->update(['stay_type_id'=>request('stay_type_id7')]);
             $visa_detail7->update(['labour_card_type_id'=>request('labour_card_type_id7')]);
+            $visa_detail7->update(['labour_card_duration_id'=>request('labour_card_duration7')]);
             $visa_detail7->update(['relation_ship_id'=>request('relation_ship_id7')]);
             $visa_detail7->update(['Remark'=>request('Remark7')]);
 
@@ -1470,5 +1416,21 @@ class VisaApplicationController extends Controller
         Toastr::success('Form Sent!');
 
         return redirect()->route('home');
+    }
+ public function delete($id)
+    {
+        
+        try{
+        $application = VisaApplicationDetail::findOrFail($id);
+        $visaId=$application->visa_application_head_id;
+
+        $application->delete();
+        Toastr::error('Successfully deleted applicant .');
+
+        return \Redirect::route('applyform.id', $visaId);
+       }catch(Exception $e)
+       {
+        return \Redirect::route('applyform.id', $visaId);
+       }
     }
 }

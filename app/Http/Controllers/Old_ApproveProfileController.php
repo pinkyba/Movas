@@ -6,7 +6,6 @@ use Illuminate\Http\Request;
 use App\Models\Profile;
 use App\Models\User;
 use Brian2694\Toastr\Facades\Toastr;
-use Exception;
 use DB;
 use Session;
 use Auth;
@@ -43,7 +42,6 @@ class ApproveProfileController extends Controller
 
     public function acceptProfile($id,request $request)
     {
-       try{
         $profile = Profile::findOrFail($id);
 
         $profile->user->update(['Status'=>2]);
@@ -64,47 +62,40 @@ class ApproveProfileController extends Controller
                     ->to($data['email'])->subject('Your signup form had been approved.');
             }
         );
+
         Toastr::success('Successfully approved company registration!');
+
         return redirect()->route('approveprofile');
-       }catch(Exception $e)
-       {
-        return redirect()->route('approveprofile');
-        // return("OK");
-       }
     }
 
     public function destroy($id,request $request)
     {
-       try{
-         $profile = Profile::findOrFail($id);
+        $profile = Profile::findOrFail($id);
         
-        $file1 = public_path() . $profile->AttachPermit;
-        $file2 = public_path() . $profile->AttachProposal;
-        $file3 = public_path() . $profile->AttachAppointed;
-        $file4 = public_path() . $profile->AttachIncreased;
+            $file1 = public_path() . $profile->AttachPermit;
+            $file2 = public_path() . $profile->AttachProposal;
+            $file3 = public_path() . $profile->AttachAppointed;
+            $file4 = public_path() . $profile->AttachIncreased;
 
-        if ($profile->AttachPermit != '') {
-            unlink($file1);
-        }
-        if ($profile->AttachProposal != '') {
-            unlink($file2);
-        }
-        if ($profile->AttachAppointed != '') {
-            unlink($file3);
-        }
-        if ($profile->AttachIncreased != '') {
-            unlink($file4);
-        }
-        
-        //update 12/22/2021
-        $profile->user->update(['Status'=>3]);
+            if ($profile->AttachPermit != '') {
+                unlink($file1);
+            }
+            if ($profile->AttachProposal != '') {
+                unlink($file2);
+            }
+            if ($profile->AttachAppointed != '') {
+                unlink($file3);
+            }
+            if ($profile->AttachIncreased != '') {
+                unlink($file4);
+            }
+            
+        $profile->user->update(['Status'=>0]);
         $profile->user->update(['RejectComment'=>$request->cmt]);
 
-        $profile->update(['AttachPermit'=>'']);
-        $profile->update(['AttachProposal'=>'']);
-        $profile->update(['AttachIncreased'=>'']);
-        $profile->update(['AttachAppointed'=>'']);
-        $profile->update(['Status'=>'2']);
+        $profile->delete();
+        
+        Toastr::error('Successfully denied company registration.');
 
         $data = array(
                     'username' => $profile->user->name,
@@ -123,9 +114,5 @@ class ApproveProfileController extends Controller
         );
 
         return redirect()->route('approveprofile');
-       }catch(Exception $e)
-       {
-        return redirect()->route('approveprofile');
-       }
     }
 }

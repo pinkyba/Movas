@@ -1,7 +1,6 @@
 @extends('admin.layout')
 @section('content')
 
-
             <div class="d-xl-flex justify-content-between align-items-start" style="border-bottom: 1px solid lightblue;">
               <p class="text-dark mb-2"> Visa Application Turn Down List </p>
 
@@ -24,7 +23,7 @@
         </div>
 
         <div class="row mt-3">
-          <div class="col-md-10">
+          <div class="col-md-12">
             <table class="table table-hover table-bordered table-responsive">
               <thead>
                 <tr style="background: #d7d8fd;color: black;">
