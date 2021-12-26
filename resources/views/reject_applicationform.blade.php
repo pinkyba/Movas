@@ -575,7 +575,7 @@
 			  <div class="modal-dialog" role="document">
 			    <div class="modal-content">
 			      <div class="modal-header">
-			        <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+			        <h5 class="modal-title" id="exampleModalLabel">စိစစ်တင်ပြချက်</h5>
 			        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
 			          <span aria-hidden="true">&times;</span>
 			        </button>
@@ -593,7 +593,7 @@
 								<th>နိုင်ငံသား</th>
 								<th>နိုင်ငံကူးလက်မှတ်</th>
 								<th>စတင်ခန့်ထားသည့်ရက်စွဲ</th>
-								<th>နေထိုင်ခွင့် ကုန်ဆုံးမည့်နေ</th>
+								<th>နေထိုင်ခွင့်ကုန်ဆုံးမည့်နေ</th>
 								<th>ပြည်ဝင်ခွင့်</th>
 								<th>နေထိုင်ခွင့်</th>
 								<th>အလုပ်သမားကဒ်/သက်တမ်း</th>

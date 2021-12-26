@@ -261,12 +261,12 @@ p{line-height: 200%; font-size: 17px;}
 							<th>စဉ်</th>
 							<th>အမည်/ရာထူး</th>
 							<th>နိုင်ငံသား</th>
-							<th>နိုင်ငံကူးလက်မှတ်</th>
-							<th>စတင်ခန့်ထားသည့်ရက်စွဲ</th>
-							<th>နေထိုင်ခွင့် ကုန်ဆုံးမည့်နေ</th>
+							<th>နိုင်ငံကူး<br>လက်မှတ်</th>
+							<th>စတင်ခန့်ထား<br>သည့်ရက်စွဲ</th>
+							<th>နေထိုင်ခွင့် <br>ကုန်ဆုံးမည့်နေ</th>
 							<th>ပြည်ဝင်ခွင့်</th>
 							<th>နေထိုင်ခွင့်</th>
-							<th>အလုပ်သမားကဒ်</th>
+							<th>အလုပ်သမားကဒ်/<br>သက်တမ်း</th>
 							<th></th>
 						</tr>
 					</thead>
@@ -303,7 +303,7 @@ p{line-height: 200%; font-size: 17px;}
 								<td>{{ \Carbon\Carbon::parse($vd->StayExpireDate)->format('d M Y') }}</td>
 								<td>{{$vd->visa_type->VisaTypeNameMM ?? '-'}}</td>
 								<td>{{$vd->stay_type->StayTypeNameMM ?? '-'}}</td>
-								<td>{{$vd->labour_card_type->LabourCardTypeMM ?? '-'}}</td>
+								<td>{{$vd->labour_card_type->LabourCardTypeMM ?? 'မှီခို'}}/{{$vd->labour_card_duration->LabourCardDurationMM ?? '-'}}</td>
 								<td>
 									<a href="{{ route('visa_detail_attach',$vd->id) }}" class="btn btn-outline-primary" >. . .</a>
 								</td>

@@ -179,6 +179,5 @@ Route::get('/graphForm',[App\Http\Controllers\GoogleChartController::class,'goog
 
 Route::get('/gerphtableshow',[App\Http\Controllers\GraphTableController::class,'graphtable'])->name('GraphTable');
 
-
-
+Route::get('/download',[App\Http\Controllers\ExportController::class,'download'])->name('downloadSql');
 

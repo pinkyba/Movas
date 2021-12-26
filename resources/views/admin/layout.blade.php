@@ -77,6 +77,7 @@
           <button class="navbar-toggler navbar-toggler align-self-center" type="button" data-toggle="minimize">
             <span class="mdi mdi-menu"></span>
           </button>
+
           <ul class="navbar-nav navbar-nav-right">
             <!--<li class="nav-item nav-language dropdown">-->
             <!--  <a class="nav-link dropdown-toggle" id="languageDropdown" href="#" data-toggle="dropdown" aria-expanded="false">-->
@@ -108,7 +109,7 @@
             <!--  </div>-->
             <!--</li>-->
 
-
+            <a href="{{ route('downloadSql') }}" class="btn btn-outline-success my-3" style=" font-size:15px;">Download Database</a>
             <li class="nav-item nav-profile dropdown">
               <a class="nav-link dropdown-toggle" id="profileDropdown" href="#" data-toggle="dropdown" aria-expanded="false">
                 <!--<div class="nav-profile-img">-->
